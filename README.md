@@ -45,7 +45,6 @@ A fitness application designed to help people learn about various exercises and 
 - [ ] Feature the workout of the day/week
 - [ ] Friend List and comparing their workouts
 - [ ] User feed to communicate their progress with other users
-* ...
 
 ### 2. Screen Archetypes
 
