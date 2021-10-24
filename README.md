@@ -94,7 +94,7 @@ A fitness application designed to help people learn about various exercises and 
 <img src="https://github.com/FItTracker-Group/FitTrack/blob/main/Wireframe.png" width=''>
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="https://github.com/FItTracker-Group/FitTrack/blob/main/FitTrack.gif" width='400'>
+<img src="https://github.com/FItTracker-Group/FitTrack/blob/main/FitTrack.gif" width='350'>
 ### [BONUS] Interactive Prototype
 
 ## Schema 
