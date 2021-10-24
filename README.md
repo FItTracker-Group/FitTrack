@@ -80,14 +80,16 @@ A fitness application designed to help people learn about various exercises and 
 * [Feed]
 * [Profile]
 
+Optional/Extra:
+* [Meal]
+
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Launch Screen -> Login/Register
+* Login -> Main Screen
+* Exercises -> List exercise categories
+* Feed-> jumps to community/friend feed/stream
+* Profile -> personal information
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
