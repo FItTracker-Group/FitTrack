@@ -102,6 +102,9 @@ Optional/Extra:
 ## Schema 
 [This section will be completed in Unit 9]
 
+### Models
+[Add table of models]
+
 ##### User
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
@@ -112,10 +115,22 @@ Optional/Extra:
   | friend_list     | ArrayList         | List of friends the user has |
   | Profile Description      | String   | User biography: user can write about themself |
 
+##### Post
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  | objectId        | String            | Unique id for the post (default field) |
+  | image           | File              | Profile image that user uploads |
+  | level           | String            | Level chosen by user that determines which words they are tested on |
+  | gamesCount      | Number            | Number of games won and lost by user |
+  | streakCount     | Number            | Number of consecutive games won by user  |
+  | highScore       | Number            | Number of consecutive games won by user (multiplied by 100 points) |
+  | favoritedWords  | Array of strings  | List of words favorited by user |
+  | seenWords       | Dictionary        | Dictionary of words and how many times the word was shown to the user |
+  | createdAt       | DateTime          | Date when user was created (default field) |
+  | updatedAt       | DateTime          | Date when user was last updated (default field) |
   
 
-### Models
-[Add table of models]
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
