@@ -120,15 +120,29 @@ Optional/Extra:
   | --------------- | ----------------- | ------------|
   | objectId        | String            | Unique id for the post (default field) |
   | image           | File              | Profile image that user uploads |
-  | level           | String            | Level chosen by user that determines which words they are tested on |
-  | gamesCount      | Number            | Number of games won and lost by user |
-  | streakCount     | Number            | Number of consecutive games won by user  |
-  | highScore       | Number            | Number of consecutive games won by user (multiplied by 100 points) |
-  | favoritedWords  | Array of strings  | List of words favorited by user |
-  | seenWords       | Dictionary        | Dictionary of words and how many times the word was shown to the user |
+  | author      | Pointer to User            | Post created by the author |
+  | description     | String            | Introduce the post  |
+  | likesCount       | Number          | Number of likes for the post |
   | createdAt       | DateTime          | Date when user was created (default field) |
-  | updatedAt       | DateTime          | Date when user was last updated (default field) |
+  | caption/titile       | String            | Title introducing what the post is about |
   
+  ##### Exercise
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  | objectId        | String            | Unique id for the user (default field) |
+  | title        | String            | The description for the exercise |
+  | type        | String            | The name of type the each exercise |
+  | image           | File              | The picture to show the type of exercise |
+  | level           | String            | The level type for each exercise(beginner, intermediate, advance) |
+
+  ##### Video
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  | objectId        | String            | Unique id for the user (default field) |
+  | title(description) | String            | The description for the video |
+  | likesCount       | Number          | Number of likes for the video | 
+  | dislikesCount       | Number          | Number of likes for the video |  
+  | url        | String            | The link from 3rd party resource |
 
 
 ### Networking
