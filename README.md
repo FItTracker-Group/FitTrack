@@ -101,6 +101,19 @@ Optional/Extra:
 
 ## Schema 
 [This section will be completed in Unit 9]
+
+##### User
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  | objectId        | String            | Unique id for the user (default field) |
+  | username        | String            | Username set by user |
+  | password        | String            | Password set by user |
+  | image           | File              | Profile image that user uploads |
+  | friend_list     | ArrayList         | List of friends the user has |
+  | Profile Description      | String   | User biography: user can write about themself |
+
+  
+
 ### Models
 [Add table of models]
 ### Networking
