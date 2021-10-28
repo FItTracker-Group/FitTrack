@@ -65,6 +65,7 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -81,6 +82,15 @@ public class RegisterFragment extends Fragment {
         etUsername = view.findViewById(R.id.etUsername);
         etPassword = view.findViewById(R.id.etPassword);
         btnRegister = view.findViewById(R.id.btnRegister);
+
+//        btnRegister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ParseUser user = new ParseUser();
+//                user.setUsername(etUsername.getText().toString());
+//                user.setPassword(etPassword.getText().toString());
+//            }
+//        });
 
         btnRegister.setOnClickListener(v -> {
             ParseUser user = new ParseUser();
@@ -110,5 +120,6 @@ public class RegisterFragment extends Fragment {
         Toast.makeText(getActivity(), "Sign up successful!!!", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
+
     }
 }
