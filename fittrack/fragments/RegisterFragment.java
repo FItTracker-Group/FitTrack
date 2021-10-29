@@ -3,6 +3,8 @@ package com.codepath.fittrack.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -77,7 +79,15 @@ public class RegisterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_register, container, false);
+
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_register, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         etFirstname = view.findViewById(R.id.etFirstname);
         etLastname = view.findViewById(R.id.etLastname);
         etEmail = view.findViewById(R.id.etEmail);
@@ -85,14 +95,6 @@ public class RegisterFragment extends Fragment {
         etPassword = view.findViewById(R.id.etPassword);
         btnRegister = view.findViewById(R.id.btnRegister);
 
-//        btnRegister.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ParseUser user = new ParseUser();
-//                user.setUsername(etUsername.getText().toString());
-//                user.setPassword(etPassword.getText().toString());
-//            }
-//        });
 
         btnRegister.setOnClickListener(v -> {
             ParseUser user = new ParseUser();
@@ -113,16 +115,13 @@ public class RegisterFragment extends Fragment {
                 }
             });
         });
-
-        // Inflate the layout for this fragment
-        return view;
     }
 
-
     private void goLoginActivity() {
-        Toast.makeText(getActivity(), "Sign up successful!!!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Sign up successful", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
 
+        getActivity().finish();
     }
 }

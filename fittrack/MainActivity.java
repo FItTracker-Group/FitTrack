@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.codepath.fittrack.fragments.TestFragment;
+import com.codepath.fittrack.fragments.FeedFragment;
+import com.codepath.fittrack.fragments.HomeFragment;
+import com.codepath.fittrack.fragments.MealFragment;
+import com.codepath.fittrack.fragments.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -33,21 +36,21 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        fragment = new TestFragment();
-                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                        fragment = new HomeFragment();
+//                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_meal:
-                        fragment = new TestFragment();
-                        Toast.makeText(MainActivity.this, "Meal", Toast.LENGTH_SHORT).show();
+                        fragment = new MealFragment();
+//                        Toast.makeText(MainActivity.this, "Meal", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_feed:
-                        fragment = new TestFragment();
-                        Toast.makeText(MainActivity.this, "Feed", Toast.LENGTH_SHORT).show();
+                        fragment = new FeedFragment();
+//                        Toast.makeText(MainActivity.this, "Feed", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_user:
                     default:
-                        fragment = new TestFragment();
-                        Toast.makeText(MainActivity.this, "User", Toast.LENGTH_SHORT).show();
+                        fragment = new UserFragment();
+//                        Toast.makeText(MainActivity.this, "User", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();

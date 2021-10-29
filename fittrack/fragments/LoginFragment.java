@@ -3,6 +3,8 @@ package com.codepath.fittrack.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -80,7 +82,15 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_login, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         etUsername = view.findViewById(R.id.etUsername);
         etPassword = view.findViewById(R.id.etPassword);
         btnLogin = view.findViewById(R.id.btnLogin);
@@ -111,9 +121,6 @@ public class LoginFragment extends Fragment {
             }
 
         });
-
-        // Inflate the layout for this fragment
-        return view;
     }
 
     private void goMainActivity() {
