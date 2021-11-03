@@ -27,7 +27,7 @@ A fitness application designed to help people learn about various exercises and 
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
-- [ ] Users can Login and signup
+- [x] Users can Login and signup
 - [ ] Exercises videos separated by categories
     - [ ] Yoga
     - [ ] Weight training
@@ -148,4 +148,32 @@ Optional/Extra:
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+- [OPTIONAL: List endpoints if using existing API such as Yelp]\
+
+#### List of network requests by screen
+- Login/Register Screen:
+    * (Read/Get) Create a new user object with provided information
+    ``` ParseUser user = new ParseUser();
+        user.setEmail(etEmail.getText().toString());
+        user.setUsername(etUsername.getText().toString());
+        user.setPassword(etPassword.getText().toString());
+        user.signUpInBackground(e -> {
+            if (e != null) {
+                Log.e(TAG, "Error signing up");
+            } else {
+                Log.i(TAG, "Sign up successful");
+                goLoginActivity();
+            }
+        }); 
+
+- Home screen:
+    * (Read/Get) Query the video title, likes, and url
+    * (Create/Post) adding a like to the video
+ 
+- Feed screen:
+    * (Create/Post) Create a post with a photo(optional), caption(optional), and description
+    * (Create/Post) adding a like to the video
+
+- Profile screen:
+    * (Read/Get) Query logged in user object
+    * (Update/PUT) Update user profile image
