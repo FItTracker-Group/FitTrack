@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.codepath.fittrack.fragments.ComposeFragment;
 import com.codepath.fittrack.fragments.FeedFragment;
 import com.codepath.fittrack.fragments.HomeFragment;
 import com.codepath.fittrack.fragments.MealFragment;
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 //                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_meal:
-                        fragment = new MealFragment();
+                        //fragment = new MealFragment();
+                        fragment = new ComposeFragment();
 //                        Toast.makeText(MainActivity.this, "Meal", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_feed:
