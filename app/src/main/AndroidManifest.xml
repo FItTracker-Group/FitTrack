@@ -13,11 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitTrack">
-
+        <activity
+            android:name=".StretchDetail"
+            android:exported="true" />
+        <activity
+            android:name=".CardioDetail"
+            android:exported="true" />
+        <activity
+            android:name=".YogaDetail"
+            android:exported="true" />
+        <activity
+            android:name=".WeightDetail"
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode = "adjustPan"> <!-- avoid soft-keyboard change the content-->
+            android:windowSoftInputMode="adjustPan"> <!-- avoid soft-keyboard change the content -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
