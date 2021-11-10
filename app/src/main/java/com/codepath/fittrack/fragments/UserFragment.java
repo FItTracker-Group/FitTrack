@@ -75,8 +75,8 @@ public class UserFragment extends Fragment {
         btnLogout = view.findViewById(R.id.btnLogout);
 
         //gets user information
-        queryUser();
-
+        queryCurrentUser();
+        //TODO:set userinformation when user signsup
         //onclick listener to log user out not complete
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +87,7 @@ public class UserFragment extends Fragment {
 
 
     }
-    private void queryUser() {
+    private void queryCurrentUser() {
         ParseQuery<UserInfo> query = ParseQuery.getQuery(UserInfo.class);
         query.include(UserInfo.KEY_USER);
         query.findInBackground(new FindCallback<UserInfo>() {
