@@ -6,7 +6,7 @@
     tools:context=".fragments.HomeFragment">
 
     <TextView
-        android:id="@+id/tvFeed"
+        android:id="@+id/tvHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
