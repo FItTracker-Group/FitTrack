@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/drawable/ic_baseline_build_circle_24.xml" value="0.11018518518518519" />
+        <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.11018518518518519" />
         <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/activity_login.xml" value="0.2361111111111111" />
         <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/fragment_login.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/fragment_register.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/fragment_user.xml" value="0.30416666666666664" />
       </map>
     </option>
   </component>
