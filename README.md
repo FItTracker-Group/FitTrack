@@ -1,6 +1,5 @@
 FitTrack Project - README Template
 ===
-#Testing Push
 # FitTrack
 
 ## Table of Contents
@@ -34,7 +33,9 @@ A fitness application designed to help people learn about various exercises and 
     - [ ] Stretching
     - [ ] Cardio
     - [ ] Sports
-- [ ] Users can edit their own Profile information
+- [ ] Finish Profile fragment
+    - [ ] Users can edit their own Profile information
+    - [x] Users information is parsed and displayed
 - [ ] Users can follow a video from our app and do the workout
 
 **Optional Nice-to-have Stories**
