@@ -72,6 +72,6 @@ public class MealFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvMeal = view.findViewById(R.id.tvFeed);
+        tvMeal = view.findViewById(R.id.tvHome);
     }
 }

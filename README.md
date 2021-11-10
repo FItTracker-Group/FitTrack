@@ -1,6 +1,5 @@
 FitTrack Project - README Template
 ===
-#Testing Push
 # FitTrack
 
 ## Table of Contents
@@ -34,7 +33,10 @@ A fitness application designed to help people learn about various exercises and 
     - [ ] Stretching
     - [ ] Cardio
     - [ ] Sports
-- [ ] Users can edit their own Profile information
+- [x] Created Home Screen with exercise categories that lead to another detailed screen
+- [ ] Finish Profile fragment
+    - [ ] Users can edit their own Profile information
+    - [x] Users information is parsed and displayed
 - [ ] Users can follow a video from our app and do the workout
 
 **Optional Nice-to-have Stories**
@@ -45,6 +47,16 @@ A fitness application designed to help people learn about various exercises and 
 - [ ] Feature the workout of the day/week
 - [ ] Friend List and comparing their workouts
 - [ ] User feed to communicate their progress with other users
+
+**Current Progress GIFS**
+
+<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/%E6%9D%A5%E8%87%AA%20iOS%20%E7%9A%84%E5%9B%BE%E5%83%8F.gif' width='200' alt='Video Walkthrough' />
+
+<img src='http://g.recordit.co/r5rZJ2afHD.gif' width='200' alt='Video Walkthrough' />
+
+<img src='http://g.recordit.co/zC0kYnk5fA.gif' width='200' alt='Video Walkthrough' />
+
+<img src='profile fragment.gif' width='200' alt='Video Walkthrough' />
 
 ### 2. Screen Archetypes
 
