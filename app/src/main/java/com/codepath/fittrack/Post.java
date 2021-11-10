@@ -24,7 +24,6 @@ import com.parse.ParseUser;
         public ParseFile getImage(){
             return getParseFile(KEY_IMAGE);
         }
-
         public void setImage(ParseFile parseFile){
             put(KEY_IMAGE, parseFile);
         }
@@ -32,7 +31,6 @@ import com.parse.ParseUser;
         public ParseUser getUser(){
             return getParseUser(KEY_USER);
         }
-
         public void setUser(ParseUser user){
             put(KEY_USER, user);
         }

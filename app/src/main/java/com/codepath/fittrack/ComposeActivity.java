@@ -79,6 +79,22 @@ public class ComposeActivity extends AppCompatActivity {
                 findUserInfo(currentUser);
             }
         });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                currentUser.logOut();
+                Toast.makeText(ComposeActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ComposeActivity.this, LoginActivity.class);
+                //Intent i = new Intent(this, MainActivity.class);
+
+                startActivity(intent);
+                // finish();
+
+                //getActivity().finish();
+            }
+        });
     }
 
     private void findUserInfo(ParseUser currentUser) {
