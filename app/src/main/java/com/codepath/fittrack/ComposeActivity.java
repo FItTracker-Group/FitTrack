@@ -153,6 +153,7 @@ public class ComposeActivity extends AppCompatActivity {
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
             Log.d(TAG, "failed to create directory");
+            Log.d(TAG, "failed to create directory");
         }
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
