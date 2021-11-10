@@ -50,7 +50,11 @@ A fitness application designed to help people learn about various exercises and 
 
 **Current Progress GIFS**
 
-<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/%E6%9D%A5%E8%87%AA%20iOS%20%E7%9A%84%E5%9B%BE%E5%83%8F.gif' width='' alt='Video Walkthrough' />
+<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/%E6%9D%A5%E8%87%AA%20iOS%20%E7%9A%84%E5%9B%BE%E5%83%8F.gif' width='200' alt='Video Walkthrough' />
+
+<img src='http://g.recordit.co/r5rZJ2afHD.gif' width='200' alt='Video Walkthrough' />
+
+<img src='http://g.recordit.co/zC0kYnk5fA.gif' width='200' alt='Video Walkthrough' />
 
 ### 2. Screen Archetypes
 
