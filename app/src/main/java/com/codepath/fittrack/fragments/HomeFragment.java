@@ -1,16 +1,24 @@
 package com.codepath.fittrack.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.codepath.fittrack.CardioDetail;
 import com.codepath.fittrack.R;
+import com.codepath.fittrack.StretchDetail;
+import com.codepath.fittrack.WeightDetail;
+import com.codepath.fittrack.YogaDetail;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,7 +28,9 @@ import com.codepath.fittrack.R;
 public class HomeFragment extends Fragment {
 
 
-    private TextView tvHome;
+    private TextView tvWeight, tvYoga;
+    private ImageView ivLogo, ivWeight, ivWeight2, ivYoga, ivCardio, ivStretch;
+    private ConstraintLayout clWeight, clYoga, clCardio, clStretch;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,6 +82,87 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvHome = view.findViewById(R.id.tvFeed);
+
+
+        ivLogo = view.findViewById(R.id.ivLogo);
+
+        clWeight = view.findViewById(R.id.clWeight);
+        clYoga = view.findViewById(R.id.clYoga);
+        clCardio = view.findViewById(R.id.clCardio);
+        clStretch = view.findViewById(R.id.clStretch);
+
+        ivWeight = view.findViewById(R.id.ivWeight);
+        ivYoga = view.findViewById(R.id.ivYoga);
+        ivCardio = view.findViewById(R.id.ivCardio);
+        ivStretch = view.findViewById(R.id.ivStretch);
+
+        ivLogo.setImageResource(R.drawable.logo);
+        ivWeight.setImageResource(R.drawable.weight);
+        ivYoga.setImageResource(R.drawable.yoga);
+        ivCardio.setImageResource(R.drawable.cardio);
+        ivStretch.setImageResource(R.drawable.stretching);
+
+
+
+
+        clWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Weight Detail", Toast.LENGTH_SHORT).show();
+                goWeightDetail();
+            }
+        });
+
+        clYoga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Yoga Detail", Toast.LENGTH_SHORT).show();
+                goYogaDetail();
+            }
+        });
+
+        clCardio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Cardio Detail", Toast.LENGTH_SHORT).show();
+                goCardioDetail();
+            }
+        });
+
+        clStretch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Stretch Detail", Toast.LENGTH_SHORT).show();
+                goStretchDetail();
+            }
+        });
+    }
+
+    private void goWeightDetail() {
+
+        Intent i = new Intent(getActivity(), WeightDetail.class);
+        startActivity(i);
+
+    }
+
+    private void goYogaDetail() {
+
+        Intent i = new Intent(getActivity(), YogaDetail.class);
+        startActivity(i);
+
+    }
+
+    private void goCardioDetail() {
+
+        Intent i = new Intent(getActivity(), CardioDetail.class);
+        startActivity(i);
+
+    }
+
+    private void goStretchDetail() {
+
+        Intent i = new Intent(getActivity(), StretchDetail.class);
+        startActivity(i);
+
     }
 }
