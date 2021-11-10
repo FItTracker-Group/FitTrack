@@ -56,6 +56,8 @@ A fitness application designed to help people learn about various exercises and 
 
 <img src='http://g.recordit.co/zC0kYnk5fA.gif' width='200' alt='Video Walkthrough' />
 
+<img src='profile fragment.gif' width='200' alt='Video Walkthrough' />
+
 ### 2. Screen Archetypes
 
 * [Login]
