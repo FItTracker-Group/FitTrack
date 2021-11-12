@@ -1,8 +1,13 @@
 package com.codepath.fittrack.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -14,9 +19,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.codepath.fittrack.ComposeActivity;
 import com.codepath.fittrack.Post;
 import com.codepath.fittrack.PostsAdapter;
 import com.codepath.fittrack.R;
+import com.codepath.fittrack.WeightDetail;
+import com.codepath.fittrack.YogaDetail;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -29,6 +37,7 @@ import java.util.List;
 public class FeedFragment extends Fragment {
 
     public static final String TAG = "FeedFragment";
+    private final int REQUEST_CODE = 20;
     private RecyclerView rvPosts;
     private SwipeRefreshLayout swipeContainer;
     protected PostsAdapter adapter;
@@ -53,6 +62,10 @@ public class FeedFragment extends Fragment {
         System.out.println("UserName =" + currentUser.getEmail());
         rvPosts = view.findViewById(R.id.rvPosts);
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+
+        //Create the menu
+        setHasOptionsMenu(true);
+
         // Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
@@ -130,4 +143,23 @@ public class FeedFragment extends Fragment {
             }
         });
     } */
+
+
+    /*----- Overhead Menu Bar -----*/
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.feed_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.action_post) {
+            Intent intent = new Intent(getActivity(), ComposeActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
