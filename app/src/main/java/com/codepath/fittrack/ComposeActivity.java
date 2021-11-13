@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +35,7 @@ import java.util.List;
 
 public class ComposeActivity extends AppCompatActivity {
 
-    public static final String TAG = "ComposeAcitivity";
+    public static final String TAG = "ComposeActivity";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private EditText etDescription;
     private Button btnCaptureImage;
@@ -66,6 +68,9 @@ public class ComposeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String description = etDescription.getText().toString();
+                //Prepare data intent
+                Intent data = new Intent();
+
                 if(description.isEmpty()){
                     Toast.makeText(ComposeActivity.this, "Description cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
@@ -77,6 +82,9 @@ public class ComposeActivity extends AppCompatActivity {
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
                 findUserInfo(currentUser);
+                //Activity finished
+                setResult(RESULT_OK, data); //set result code and bundle data for response
+                finish(); //close the activity, pass the data back to feed
             }
         });
 
