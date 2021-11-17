@@ -10,6 +10,7 @@
         android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
         android:background="#CEE8D6">
 
         <androidx.recyclerview.widget.RecyclerView
