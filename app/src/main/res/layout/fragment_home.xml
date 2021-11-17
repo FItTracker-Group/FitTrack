@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#444b60"
+    android:background="#CEE8D6"
     tools:context=".fragments.HomeFragment">
 
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="400dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="55dp"
+        android:layout_width="411dp"
+        android:layout_height="176dp"
         android:contentDescription="@string/Logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/logo" />
+        tools:layout_editor_absoluteY="3dp"
+        tools:src="@drawable/fittracklogo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clYoga"
@@ -52,7 +51,7 @@
             android:layout_marginEnd="32dp"
             android:text="@string/Yoga"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +92,7 @@
             android:layout_marginEnd="32dp"
             android:text="@string/Cardio"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +132,7 @@
             android:layout_marginEnd="32dp"
             android:text="@string/Stretch"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -172,7 +171,7 @@
             android:layout_marginEnd="32dp"
             android:text="@string/Weight"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
 
             android:textSize="24sp"
             android:textStyle="bold"
