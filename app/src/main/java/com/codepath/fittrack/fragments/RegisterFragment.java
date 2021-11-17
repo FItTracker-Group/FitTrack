@@ -88,8 +88,8 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        etFirstname = view.findViewById(R.id.etFirstname);
-        etLastname = view.findViewById(R.id.etLastname);
+//        etFirstname = view.findViewById(R.id.etFirstname);
+//        etLastname = view.findViewById(R.id.etLastname);
         etEmail = view.findViewById(R.id.etEmail);
         etUsername = view.findViewById(R.id.etUsername);
         etPassword = view.findViewById(R.id.etPassword);
