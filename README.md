@@ -27,17 +27,18 @@ A fitness application designed to help people learn about various exercises and 
 
 **Required Must-have Stories**
 - [x] Users can Login and signup
-- [ ] Exercises videos separated by categories
+- [ ] Users can follow a video from our app and do the exercises separated by categories
     - [ ] Yoga
     - [ ] Weight training
     - [ ] Stretching
     - [ ] Cardio
     - [ ] Sports
 - [x] Created Home Screen with exercise categories that lead to another detailed screen
-- [ ] Finish Profile fragment
+- [ ] Profile fragment
     - [ ] Users can edit their own Profile information
     - [x] Users information is parsed and displayed
-- [ ] Users can follow a video from our app and do the workout
+- [x] User feed to communicate their progress with other users
+- [x] User can make a post to the feed
 
 **Optional Nice-to-have Stories**
 - [ ] Weekly Weight Tracker - can upload pictures of themselves
@@ -46,17 +47,11 @@ A fitness application designed to help people learn about various exercises and 
 - [ ] Point System
 - [ ] Feature the workout of the day/week
 - [ ] Friend List and comparing their workouts
-- [ ] User feed to communicate their progress with other users
+
 
 **Current Progress GIFS**
 
-<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/%E6%9D%A5%E8%87%AA%20iOS%20%E7%9A%84%E5%9B%BE%E5%83%8F.gif' width='200' alt='Video Walkthrough' />
-
-<img src='http://g.recordit.co/r5rZJ2afHD.gif' width='200' alt='Video Walkthrough' />
-
-<img src='http://g.recordit.co/zC0kYnk5fA.gif' width='200' alt='Video Walkthrough' />
-
-<img src='profile fragment.gif' width='200' alt='Video Walkthrough' />
+<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/fittrack%20prototype.gif' width='200' alt='Video Walkthrough' />
 
 ### 2. Screen Archetypes
 

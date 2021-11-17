@@ -5,27 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:backgroundTint="#444b60"
+    android:backgroundTint="#CEE8D6"
     tools:context=".fragments.UserFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#8A8A8A"
-        android:clickable="true"
-        android:src="@drawable/ic_baseline_settings_24"
-        app:borderWidth="0dp"
-        app:fabSize="mini"
-        app:maxImageSize="40dp"
-        app:pressedTranslationZ="0dp"
-        app:useCompatPadding="false" />
 
     <Button
         android:id="@+id/btnLogout"
@@ -52,16 +35,16 @@
 
     <TextView
         android:id="@+id/tvProfileName"
-        android:layout_width="121dp"
+        android:layout_width="183dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="137dp"
-        android:layout_marginEnd="21dp"
+        android:layout_marginEnd="-47dp"
         android:layout_toStartOf="@+id/floatingActionButton2"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         tools:text="name?" />
 
     <TextView
@@ -75,7 +58,7 @@
         android:layout_marginEnd="23dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         tools:text="a long or short description about themselves" />
 
 </RelativeLayout>
