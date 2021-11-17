@@ -34,6 +34,21 @@
         <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/fragment_login.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/fragment_register.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/fragment_user.xml" value="0.30416666666666664" />
+        <entry key="app/src/main/res/layout/activity_cardio_detail.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_compose.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_stretch_detail.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_user.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_weight_detail.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_yoga_detail.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/fragment_feed.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/fragment_meal.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/fragment_user.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/item_post.xml" value="0.275" />
       </map>
     </option>
   </component>

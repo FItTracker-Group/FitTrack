@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment {
         ivCardio = view.findViewById(R.id.ivCardio);
         ivStretch = view.findViewById(R.id.ivStretch);
 
-        ivLogo.setImageResource(R.drawable.logo);
+        ivLogo.setImageResource(R.drawable.fittracklogo);
         ivWeight.setImageResource(R.drawable.weight);
         ivYoga.setImageResource(R.drawable.yoga);
         ivCardio.setImageResource(R.drawable.cardio);
