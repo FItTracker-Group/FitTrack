@@ -41,7 +41,6 @@ public class ComposeActivity extends AppCompatActivity {
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
-    private Button btnLogout;
 
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -55,7 +54,7 @@ public class ComposeActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
-        btnLogout = findViewById(R.id.btnLogout);
+
        // queryPosts();
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,21 +87,6 @@ public class ComposeActivity extends AppCompatActivity {
             }
         });
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                currentUser.logOut();
-                Toast.makeText(ComposeActivity.this, "Logout", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ComposeActivity.this, LoginActivity.class);
-                //Intent i = new Intent(this, MainActivity.class);
-
-                startActivity(intent);
-                // finish();
-
-                //getActivity().finish();
-            }
-        });
     }
 
     private void findUserInfo(ParseUser currentUser) {
