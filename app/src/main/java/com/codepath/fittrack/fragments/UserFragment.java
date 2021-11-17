@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.fittrack.ComposeActivity;
+import com.codepath.fittrack.EditUserInfoActivity;
 import com.codepath.fittrack.LoginActivity;
 import com.codepath.fittrack.R;
 import com.codepath.fittrack.UserInfo;
@@ -35,7 +40,7 @@ import java.util.List;
 public class UserFragment extends Fragment {
 
     public static final String TAG= "UserFragment";
-
+    private final int REQUEST_CODE = 20;
     private TextView tvProfileName;
     private TextView tvProfileDescription;
     private ImageView ivProfileImage;
@@ -74,6 +79,9 @@ public class UserFragment extends Fragment {
         ivProfileImage = view.findViewById(R.id.ivProfileImage);
         btnLogout = view.findViewById(R.id.btnLogout);
 
+        //Create the menu
+        setHasOptionsMenu(true);
+
         //gets user information
         queryCurrentUser();
         //TODO:set userinformation when user signsup
@@ -84,8 +92,6 @@ public class UserFragment extends Fragment {
                 goLoginActivity(view);
             }
         });
-
-
     }
     private void queryCurrentUser() {
         ParseQuery<UserInfo> query = ParseQuery.getQuery(UserInfo.class);
@@ -119,5 +125,23 @@ public class UserFragment extends Fragment {
         Intent i= new Intent(view.getContext(), LoginActivity.class);
         startActivity(i);
         getActivity().finish();
+    }
+
+    /*----- Overhead Menu Bar -----*/
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.user_edit_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.action_user_edit) {
+            Intent intent = new Intent(getActivity(), EditUserInfoActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
