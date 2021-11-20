@@ -108,7 +108,6 @@ public class HomeFragment extends Fragment {
         clWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"Weight Detail", Toast.LENGTH_SHORT).show();
                 goWeightDetail();
             }
         });
@@ -116,7 +115,6 @@ public class HomeFragment extends Fragment {
         clYoga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"Yoga Detail", Toast.LENGTH_SHORT).show();
                 goYogaDetail();
             }
         });
@@ -124,7 +122,6 @@ public class HomeFragment extends Fragment {
         clCardio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"Cardio Detail", Toast.LENGTH_SHORT).show();
                 goCardioDetail();
             }
         });
@@ -132,7 +129,6 @@ public class HomeFragment extends Fragment {
         clStretch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"Stretch Detail", Toast.LENGTH_SHORT).show();
                 goStretchDetail();
             }
         });

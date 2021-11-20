@@ -13,6 +13,7 @@ public class ParseApplication extends Application {
 
         ParseObject.registerSubclass(UserInfo.class);
         // Register your parse models
+        ParseObject.registerSubclass(Video.class);
         ParseObject.registerSubclass(Post.class);
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("qrPzWdcwXBj2CFUBU65NDNKzTp7zfR3sNL828DpY")

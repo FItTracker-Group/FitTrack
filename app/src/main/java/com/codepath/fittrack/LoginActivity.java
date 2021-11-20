@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
+        getSupportActionBar().hide();
+
         tabLayout = findViewById(R.id.tlLogin);
         pager2 = findViewById(R.id.viewpager2);
 
