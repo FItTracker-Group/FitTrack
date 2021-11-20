@@ -77,6 +77,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                     //super.onReady(youTubePlayer);
                     String videoId = video.getVideoId();
                     youTubePlayer.loadVideo(videoId, 0);
+                    youTubePlayer.pause();
                 }
             });
         }
