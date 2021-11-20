@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:drawable/editbox_background_normal"
+    android:background="#CEE8D6"
     tools:context=".LoginActivity">
 
     <com.google.android.material.tabs.TabLayout
@@ -17,7 +17,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:background="#FFFFFF"
+        android:background="#A3E1D7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="-9dp" />

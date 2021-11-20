@@ -110,7 +110,7 @@ public class FeedFragment extends Fragment {
             @Override
             public void done(List<Post> posts, ParseException e) {
                 if(e != null){
-                    Log.e(TAG, "Issue with geting Posts", e);
+                    Log.e(TAG, "Issue with getting Posts", e);
                 }
                 for(Post post : posts){
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
@@ -120,31 +120,7 @@ public class FeedFragment extends Fragment {
             }
         });
     }
-
-
-    /*protected void queryPosts() {
-        // Specify which class to query
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        //include the for querying other database we want to include User
-        query.include(Post.KEY_USER);
-        //query.setLimit(20);
-       // query.addDescendingOrder(Post.KEY_CREATED_KEY);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if(e != null){
-                    Log.e(TAG, "Issue with geting Posts", e);
-                }
-                for(Post post : posts){
-                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
-                }
-                allPosts.addAll(posts);
-                adapter.notifyDataSetChanged();
-            }
-        });
-    } */
-
-
+    
     /*----- Overhead Menu Bar -----*/
 
     @Override
