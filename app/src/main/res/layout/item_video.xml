@@ -27,8 +27,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="61dp"
         app:autoPlay="false"
-        app:showFullScreenButton="true"
-        />
+        app:showFullScreenButton="true" />
 
     <TextView
         android:id="@+id/tvDifficulty"
