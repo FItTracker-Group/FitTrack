@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.codepath.fittrack.MainActivity;
@@ -29,8 +30,9 @@ import com.parse.ParseUser;
 public class LoginFragment extends Fragment {
 
     public static final String TAG = "LoginFragment";
+
     private EditText etUsername;
-    private  EditText etPassword;
+    private EditText etPassword;
     private Button btnLogin;
 
 
