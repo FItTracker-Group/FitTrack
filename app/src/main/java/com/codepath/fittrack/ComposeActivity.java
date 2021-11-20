@@ -171,21 +171,4 @@ public class ComposeActivity extends AppCompatActivity {
         });
     }
 
-    private void queryPosts() {
-        // Specify which class to query
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        //include the for querying other database we want to include User
-        query.include(Post.KEY_USER);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if(e != null){
-                    Log.e(TAG, "Issue with geting Posts", e);
-                }
-                for(Post post : posts){
-                    Log.i(TAG, "Post: " + post.getDescription() + " " + post.getUser().getUsername());
-                }
-            }
-        });
-    }
 }
