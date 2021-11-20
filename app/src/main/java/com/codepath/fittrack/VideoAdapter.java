@@ -31,7 +31,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View videoView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
-        return new ViewHolder(videoView);
+        return new VideoAdapter.ViewHolder(videoView);
     }
 
     @Override
@@ -68,7 +68,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         }
 
         public void bind(Video video) {
-            Log.i(TAG, "Hello");
             tvTitle.setText(video.getVideoTitle());
             difficulty.setText(video.getVideoDifficulty());
             muscleType.setText(video.getMuscleType());
