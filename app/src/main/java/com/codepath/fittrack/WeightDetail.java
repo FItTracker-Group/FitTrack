@@ -51,14 +51,14 @@ public class WeightDetail extends AppCompatActivity {
         query.addDescendingOrder(Video.VIDEO_DIFFICULTY);
         query.findInBackground(new FindCallback<Video>() {
             @Override
-            public void done(List<Video> videos, ParseException e) {
+            public void done(List<Video> list, ParseException e) {
                 if(e != null){
                     Log.e(TAG, "Issue with getting Video", e);
                 }
-                for(Video video : videos){
+                for(Video video : list){
                     Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
                 }
-                videos.addAll(videos);
+                videos.addAll(list);
                 adapter.notifyDataSetChanged();
             }
         });
