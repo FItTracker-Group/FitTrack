@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="0dp"
-    android:background="#FFFFFF"
+    android:background="#CEE8D6"
     tools:context=".fragments.LoginFragment">
 
     <EditText
@@ -14,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="222dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
@@ -53,16 +54,16 @@
         android:text="LOGIN"
         android:textColorHighlight="#000000" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="170dp"
+        android:layout_height="128dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="64dp"
-        android:text="LOGIN"
-        android:textColor="#673AB7"
-        android:textSize="34sp" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="121dp"
+        android:src="@drawable/fittracklogo" />
+
 </RelativeLayout>
