@@ -23,6 +23,7 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/btn_bg"
         android:backgroundTint="#3F51B5"
+        android:paddingTop="2dp"
         android:text="Logout" />
 
     <ImageView
@@ -40,27 +41,32 @@
         android:layout_width="183dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="137dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="144dp"
         android:layout_marginEnd="-47dp"
         android:layout_toStartOf="@+id/floatingActionButton2"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="TextView"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         tools:text="name?" />
 
     <TextView
         android:id="@+id/tvProfileDescription"
-        android:layout_width="176dp"
-        android:layout_height="115dp"
+        android:layout_width="194dp"
+        android:layout_height="148dp"
         android:layout_below="@+id/tvProfileName"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="23dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
         android:layout_toEndOf="@+id/ivProfileImage"
+        android:background="@drawable/input_bg"
+        android:paddingStart="14dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="8dp"
         android:text="TextView"
         android:textColor="#000000"
         tools:text="a long or short description about themselves" />

@@ -31,7 +31,7 @@ public class WeightDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight_detail);
-        getSupportActionBar().hide();
+        getSupportActionBar().setTitle("                    Weight Training");
 
         rvWeightExercises = findViewById(R.id.rvWeightExercises);
         YouTubePlayerView youTubePlayerView = findViewById(R.id.ytVideo);
@@ -46,19 +46,31 @@ public class WeightDetail extends AppCompatActivity {
     protected void queryVideos() {
         // Specify which class to query
         ParseQuery<Video> query = ParseQuery.getQuery(Video.class);
-        //include the for querying other database we want to include User
-        //query.include(Video.);
         query.addDescendingOrder(Video.VIDEO_DIFFICULTY);
         query.findInBackground(new FindCallback<Video>() {
             @Override
-            public void done(List<Video> videos, ParseException e) {
+            public void done(List<Video> list, ParseException e) {
                 if(e != null){
                     Log.e(TAG, "Issue with getting Video", e);
                 }
-                for(Video video : videos){
-                    Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
+                List<Video> easyList = new ArrayList<>();
+                List<Video> mediumList = new ArrayList<>();
+                List<Video> hardList = new ArrayList<>();
+                for(Video video : list){
+                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("easy")){
+                        easyList.add(video);
+                    }
+                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("medium")){
+                        mediumList.add(video);
+                    }
+                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("hard")){
+                        hardList.add(video);
+                    }
+                        Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
                 }
-                videos.addAll(videos);
+                videos.addAll(easyList);
+                videos.addAll(mediumList);
+                videos.addAll(hardList);
                 adapter.notifyDataSetChanged();
             }
         });
