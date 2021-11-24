@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,18 +20,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.codepath.fittrack.ComposeActivity;
 import com.codepath.fittrack.EditUserInfoActivity;
 import com.codepath.fittrack.LoginActivity;
 import com.codepath.fittrack.R;
 import com.codepath.fittrack.UserInfo;
-import com.parse.FindCallback;
-import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,6 +35,8 @@ import java.util.List;
 public class UserFragment extends Fragment {
 
     public static final String TAG= "UserFragment";
+    public static final String KEY_DESCRIPTION= "userDescription";
+    public static final String KEY_PROFILE_IMAGE="profileImage";
     private final int REQUEST_CODE = 20;
     private TextView tvProfileName;
     private TextView tvProfileDescription;
@@ -88,7 +83,7 @@ public class UserFragment extends Fragment {
         setHasOptionsMenu(true);
 
         //gets user information
-        queryCurrentUser();
+        displayUser();
         //TODO:set userinformation when user signsup
         //onclick listener to log user out not complete
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -98,31 +93,18 @@ public class UserFragment extends Fragment {
             }
         });
     }
-    private void queryCurrentUser() {
-        ParseQuery<UserInfo> query = ParseQuery.getQuery(UserInfo.class);
-        query.include(UserInfo.KEY_USER);
-        query.findInBackground(new FindCallback<UserInfo>() {
-            @Override
-            public void done(List<UserInfo> usersinfo, ParseException e) {
-                if(e!=null){
-                    Log.e(TAG, "Issue with getting users", e);
-                    return;
-                }
-                //Toast.makeText(getActivity(), "hello", Toast.LENGTH_SHORT).show();
-                for(UserInfo user : usersinfo){
-                    if (user.getUser().getUsername().equals(ParseUser.getCurrentUser().getUsername())){
-                        //changing front end
-                        tvProfileName.setText(user.getUser().getUsername());
-                        tvProfileDescription.setText(user.getUserDescription());
-                        ParseFile image = user.getImage();
-                        if(image!=null){
-                            Glide.with(getContext()).load(user.getImage().getUrl()).into(ivProfileImage);
-                        }
-                        return;
-                    }
-                }
+
+    private void displayUser() {
+        ParseUser currentUser= ParseUser.getCurrentUser();
+        tvProfileName.setText(currentUser.getUsername());
+        tvProfileDescription.setText(currentUser.getString(KEY_DESCRIPTION));
+        ParseFile image = currentUser.getParseFile(KEY_PROFILE_IMAGE);
+        if(image!=null){
+            if(getContext()==null){
+                return;
             }
-        });
+            Glide.with(getContext()).load(image.getUrl()).into(ivProfileImage);
+        }
     }
 
     private void goLoginActivity(View view) {
@@ -149,4 +131,36 @@ public class UserFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    /* query user using UserInfo no longer used
+    private void queryCurrentUser() {
+        ParseQuery<UserInfo> query = ParseQuery.getQuery(UserInfo.class);
+        query.include(UserInfo.KEY_USER);
+        query.findInBackground(new FindCallback<UserInfo>() {
+            @Override
+            public void done(List<UserInfo> usersinfo, ParseException e) {
+                if(e!=null){
+                    Log.e(TAG, "Issue with getting users", e);
+                    return;
+                }
+                //Toast.makeText(getActivity(), "hello", Toast.LENGTH_SHORT).show();
+                for(UserInfo user : usersinfo){
+                    if (user.getUser().getUsername().equals(ParseUser.getCurrentUser().getUsername())){
+                        //changing front end
+                        Log.i(TAG, user.getUsername());
+                        tvProfileName.setText(user.getUsername());
+                        tvProfileDescription.setText(user.getUserDescription());
+                        ParseFile image = user.getImage();
+                        if(image!=null){
+                            if(getContext()==null){
+                                return;
+                            }
+                            Glide.with(getContext()).load(user.getImage().getUrl()).into(ivProfileImage);
+                        }
+                        return;
+                    }
+                }
+            }
+        });
+    }*/
 }

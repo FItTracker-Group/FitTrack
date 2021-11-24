@@ -9,18 +9,31 @@
     android:orientation="vertical"
     tools:context=".EditUserInfoActivity">
 
+
     <EditText
-        android:id="@+id/etDescription"
+        android:id="@+id/etTextPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:fontFamily="monospace"
-        android:hint="Description "
+        android:hint="Enter your new name here "
         android:inputType="textPersonName"
-        android:singleLine="false"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="23dp" />
+        android:paddingBottom="20dp" />
 
+    <EditText
+        android:id="@+id/etTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter your new description here"
+        android:inputType="textPersonName"
+        android:paddingBottom="20dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Take a new profile picture below"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btnCaptureImage"

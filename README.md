@@ -27,12 +27,11 @@ A fitness application designed to help people learn about various exercises and 
 
 **Required Must-have Stories**
 - [x] Users can Login and signup
-- [ ] Users can follow a video from our app and do the exercises separated by categories
-    - [ ] Yoga
-    - [ ] Weight training
+- [x] Users can follow a video from our app and do the exercises separated by categories
+    - [x] Yoga
+    - [x] Weight training
     - [ ] Stretching
     - [ ] Cardio
-    - [ ] Sports
 - [x] Created Home Screen with exercise categories that lead to another detailed screen
 - [ ] Profile fragment
     - [ ] Users can edit their own Profile information
@@ -51,7 +50,7 @@ A fitness application designed to help people learn about various exercises and 
 
 **Current Progress GIFS**
 
-<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/fittrack%20prototype.gif' width='200' alt='Video Walkthrough' />
+<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/Unit-12-FitTrack.gif' width='200' alt='Video Walkthrough' />
 
 ### 2. Screen Archetypes
 
