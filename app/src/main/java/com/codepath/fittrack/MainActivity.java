@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_meal:
                         fragment = new MealFragment();
-                        //fragment = new ComposeFragment();
                         break;
                     case R.id.nav_feed:
                         fragment = new FeedFragment();

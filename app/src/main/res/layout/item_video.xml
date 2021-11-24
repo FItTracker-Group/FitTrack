@@ -16,6 +16,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:textSize="20sp"
+        android:textStyle="bold"
         tools:text="The PERFECT Beginner Workout (Sets and Reps Included)" />
 
 
@@ -24,8 +25,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="61dp"
+        android:layout_below="@+id/tvTitle"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="11dp"
         app:autoPlay="false"
         app:showFullScreenButton="true" />
 
@@ -33,36 +37,48 @@
         android:id="@+id/tvDifficulty"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/ytVideo"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="306dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="14dp"
         android:layout_toEndOf="@+id/tvDummy"
         android:textSize="16sp"
+        android:textStyle="bold"
         tools:text="Easy" />
 
     <TextView
         android:id="@+id/tvMuscleType"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ytVideo"
         android:layout_marginStart="43dp"
         android:layout_marginLeft="250dp"
-        android:layout_marginTop="306dp"
+        android:layout_marginTop="14dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:layout_toEndOf="@+id/tvDifficulty"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         tools:text="Chest" />
 
     <TextView
         android:id="@+id/tvDummy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ytVideo"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="306dp"
+        android:layout_marginTop="14dp"
         android:layout_marginBottom="8dp"
         android:text="Difficulty:"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tvDifficulty"
+        android:layout_marginBottom="4dp"
+        android:background="@android:color/darker_gray" />
 
 </RelativeLayout>

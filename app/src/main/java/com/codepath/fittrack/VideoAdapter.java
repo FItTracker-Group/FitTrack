@@ -70,7 +70,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         public void bind(Video video) {
             tvTitle.setText(video.getVideoTitle());
             difficulty.setText(video.getVideoDifficulty());
-            muscleType.setText(video.getMuscleType());
+
+            if (video.getVideoCategory().equals("weight")) {
+                muscleType.setText(video.getMuscleType());
+            }
+
             youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
                 @Override
                 public void onReady(YouTubePlayer youTubePlayer) {

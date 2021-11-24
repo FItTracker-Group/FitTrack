@@ -19,17 +19,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.codepath.fittrack.ComposeActivity;
 import com.codepath.fittrack.EditUserInfoActivity;
 import com.codepath.fittrack.LoginActivity;
 import com.codepath.fittrack.R;
 import com.codepath.fittrack.UserInfo;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,6 +48,8 @@ public class UserFragment extends Fragment {
     private ImageView ivProfileImage;
     private Button btnLogout;
     private UserInfo currentUserInfo;
+
+
 
     public UserFragment() {
         // Required empty public constructor
@@ -66,10 +70,13 @@ public class UserFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user, container, false);
 
     }
+    ArrayList<Entry> yValues = new ArrayList<>();
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -78,6 +85,8 @@ public class UserFragment extends Fragment {
         tvProfileDescription = view.findViewById(R.id.tvProfileDescription);
         ivProfileImage = view.findViewById(R.id.ivProfileImage);
         btnLogout = view.findViewById(R.id.btnLogout);
+
+
 
         //Create the menu
         setHasOptionsMenu(true);
@@ -92,7 +101,11 @@ public class UserFragment extends Fragment {
                 goLoginActivity(view);
             }
         });
+
     }
+
+
+
     private void queryCurrentUser() {
         ParseQuery<UserInfo> query = ParseQuery.getQuery(UserInfo.class);
         query.include(UserInfo.KEY_USER);
@@ -119,6 +132,8 @@ public class UserFragment extends Fragment {
             }
         });
     }
+
+
 
     private void goLoginActivity(View view) {
         ParseUser.logOut();
