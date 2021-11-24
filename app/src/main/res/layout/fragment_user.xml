@@ -1,74 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#CEE8D6"
-    tools:context=".fragments.UserFragment">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/btn_bg"
-        android:backgroundTint="#3F51B5"
-        android:paddingTop="2dp"
-        android:text="Logout" />
-
-    <ImageView
-        android:id="@+id/ivProfileImage"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="144dp"
-        tools:src="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tvProfileName"
-        android:layout_width="183dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="-47dp"
-        android:layout_toStartOf="@+id/floatingActionButton2"
-        android:layout_toEndOf="@+id/ivProfileImage"
-        android:text="TextView"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:text="name?" />
+        android:background="#A3E1D7"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="@android:color/white">
 
-    <TextView
-        android:id="@+id/tvProfileDescription"
-        android:layout_width="194dp"
-        android:layout_height="148dp"
-        android:layout_below="@+id/tvProfileName"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="16dp"
-        android:layout_toEndOf="@+id/ivProfileImage"
-        android:background="@drawable/input_bg"
-        android:paddingStart="14dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="14dp"
-        android:paddingBottom="8dp"
-        android:text="TextView"
-        android:textColor="#000000"
-        tools:text="a long or short description about themselves" />
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/profile"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:backgroundTint="#CEE8D6"
+        tools:context=".fragments.UserFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="92dp"
+            android:layout_marginEnd="108dp"
+            android:layout_marginBottom="77dp"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="#3F51B5"
+            android:paddingTop="2dp"
+            android:text="Logout" />
+
+        <ImageView
+            android:id="@+id/ivProfileImage"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="144dp"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvProfileName"
+            android:layout_width="183dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="144dp"
+            android:layout_marginEnd="-47dp"
+
+            android:layout_toEndOf="@+id/ivProfileImage"
+            android:text="TextView"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="name?" />
+
+        <TextView
+            android:id="@+id/tvProfileDescription"
+            android:layout_width="194dp"
+            android:layout_height="148dp"
+            android:layout_below="@+id/tvProfileName"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@+id/ivProfileImage"
+            android:background="@drawable/input_bg"
+            android:paddingStart="14dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="8dp"
+            android:text="TextView"
+            android:textColor="#000000"
+            tools:text="a long or short description about themselves" />
+
+    </RelativeLayout>
+</LinearLayout>

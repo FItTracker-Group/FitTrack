@@ -11,6 +11,6 @@ public class StretchDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stretch_detail);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
     }
 }

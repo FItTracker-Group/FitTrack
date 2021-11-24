@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,17 +16,21 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Observer;
 
-public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> implements Filterable {
     public static final String TAG = "VideoAdapter";
     private Context context;
     private List<Video> videos;
+    private List<Video> videosFull;
 
     public VideoAdapter(Context context, List<Video> videos) {
         this.context = context;
         this.videos = videos;
+        videosFull = new ArrayList<>(videos); //create an independent copy
     }
 
     @NonNull
@@ -50,6 +56,41 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Video> filteredList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0)
+            {
+                filteredList.addAll(videosFull);
+            } else{
+                String filterPattern = constraint.toString().toLowerCase().trim(); //removes empty spaces and case sensitive searches
+
+                for(Video item : videosFull){
+                    if(item.getVideoDifficulty().toLowerCase().contains(filterPattern) || item.getVideoTitle().toLowerCase().contains(filterPattern) || item.getMuscleType().toLowerCase().contains(filterPattern))
+                        filteredList.add(item);
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            results.count = filteredList.size();
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            videos.clear();
+            videos.addAll((ArrayList)filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private YouTubePlayerView youTubePlayerView;
@@ -70,7 +111,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         public void bind(Video video) {
             tvTitle.setText(video.getVideoTitle());
             difficulty.setText(video.getVideoDifficulty());
-            muscleType.setText(video.getMuscleType());
+
+            if(video.getVideoCategory().equals("weight") || video.getVideoCategory().equals("stretch"))
+                muscleType.setText(video.getMuscleType());
+
             youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
                 @Override
                 public void onReady(YouTubePlayer youTubePlayer) {

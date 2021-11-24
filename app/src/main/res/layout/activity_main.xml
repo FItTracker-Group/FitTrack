@@ -13,16 +13,18 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:itemBackground="@color/app_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/button_navigation" />
+        app:menu="@menu/button_navigation"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"/>
 
     <FrameLayout
         android:id="@+id/flContainer"
-        android:layout_width="411dp"
-        android:layout_height="681dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"

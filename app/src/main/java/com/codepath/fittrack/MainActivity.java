@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         fragment = new HomeFragment();
                         break;
-                    case R.id.nav_meal:
+                    /*case R.id.nav_meal:
                         fragment = new MealFragment();
                         //fragment = new ComposeFragment();
-                        break;
+                        break;*/
                     case R.id.nav_feed:
                         fragment = new FeedFragment();
                         break;
