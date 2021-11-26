@@ -19,19 +19,17 @@ import androidx.appcompat.widget.Toolbar;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class WeightDetail extends AppCompatActivity {
 
     public static final String TAG = "WeightDetail";
     private RecyclerView rvWeightExercises;
     protected VideoAdapter adapter;
-    protected List<Video> videos;
+    Vector<Video> videos = new Vector<Video>();
 
 
     @Override
@@ -47,11 +45,11 @@ public class WeightDetail extends AppCompatActivity {
 
 
         rvWeightExercises = findViewById(R.id.rvWeightExercises);
-        YouTubePlayerView youTubePlayerView = findViewById(R.id.ytVideo);
+        rvWeightExercises.setHasFixedSize(true);
 
-        videos = new ArrayList<>();
-        //adapter = new VideoAdapter(this, videos);
-        //rvWeightExercises.setAdapter(adapter);
+        //videos = new Vector<Video>();
+        //adapter = new VideoAdapter(WeightDetail.this, videos);
+        rvWeightExercises.setAdapter(adapter);
         rvWeightExercises.setLayoutManager(new LinearLayoutManager(this));
         queryVideos();
     }
@@ -60,6 +58,7 @@ public class WeightDetail extends AppCompatActivity {
     protected void queryVideos() {
         // Specify which class to query
         ParseQuery<Video> query = ParseQuery.getQuery(Video.class);
+        query.whereEqualTo("Category", "weight");
         query.addDescendingOrder(Video.VIDEO_DIFFICULTY);
         query.findInBackground(new FindCallback<Video>() {
             @Override
@@ -71,16 +70,19 @@ public class WeightDetail extends AppCompatActivity {
                 List<Video> mediumList = new ArrayList<>();
                 List<Video> hardList = new ArrayList<>();
                 for(Video video : list){
-                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("easy")){
+                    if(video.getVideoDifficulty().equals("easy")){
+                        video.setVideoUrl(video.getVideoUrl());
                         easyList.add(video);
                     }
-                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("medium")){
+                    if(video.getVideoDifficulty().equals("medium")){
+                        video.setVideoUrl(video.getVideoUrl());
                         mediumList.add(video);
                     }
-                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("hard")){
+                    if(video.getVideoDifficulty().equals("hard")){
+                        video.setVideoUrl(video.getVideoUrl());
                         hardList.add(video);
                     }
-                        Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
+                    Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
                 }
                 videos.addAll(easyList);
                 videos.addAll(mediumList);

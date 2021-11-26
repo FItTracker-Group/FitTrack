@@ -1,40 +1,53 @@
 package com.codepath.fittrack;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class CardioDetail extends AppCompatActivity {
 
     public static final String TAG = "CardioDetail";
     private RecyclerView rvCardioExercises;
     protected VideoAdapter adapter;
-    protected List<Video> videos;
+    Vector<Video> videos = new Vector<Video>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weight_detail);
-        getSupportActionBar().setTitle("                     Cardio Workout");
+        setContentView(R.layout.activity_cardio_detail);
 
-        rvCardioExercises = findViewById(R.id.rvWeightExercises);
-        YouTubePlayerView youTubePlayerView = findViewById(R.id.ytVideo);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
 
-        videos = new ArrayList<>();
-        adapter = new VideoAdapter(this, videos);
-        rvCardioExercises.setAdapter(adapter);
+        rvCardioExercises = findViewById(R.id.rvCardioExercises);
+
+
+        //videos = new Vector<Video>();
+        //adapter = new VideoAdapter(this, videos);
+        //rvCardioExercises.setAdapter(adapter);
         rvCardioExercises.setLayoutManager(new LinearLayoutManager(this));
         queryVideos();
     }
@@ -54,12 +67,15 @@ public class CardioDetail extends AppCompatActivity {
                 List<Video> hardList = new ArrayList<>();
                 for(Video video : list){
                     if(video.getVideoCategory().equals("cardio") && video.getVideoDifficulty().equals("easy")){
+                        video.setVideoUrl(video.getVideoUrl());
                         easyList.add(video);
                     }
                     if(video.getVideoCategory().equals("cardio") && video.getVideoDifficulty().equals("medium")){
+                        video.setVideoUrl(video.getVideoUrl());
                         mediumList.add(video);
                     }
                     if(video.getVideoCategory().equals("cardio") && video.getVideoDifficulty().equals("hard")){
+                        video.setVideoUrl(video.getVideoUrl());
                         hardList.add(video);
                     }
                     Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
@@ -67,8 +83,36 @@ public class CardioDetail extends AppCompatActivity {
                 videos.addAll(easyList);
                 videos.addAll(mediumList);
                 videos.addAll(hardList);
+
+                adapter = new VideoAdapter(getApplicationContext(), videos);
+                rvCardioExercises.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setQueryHint("Type here to search");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 }
