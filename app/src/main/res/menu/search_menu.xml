@@ -11,19 +11,16 @@
 
     <item
         android:id="@+id/action_easy"
-        android:icon="@drawable/ic_search"
         android:title="Beginner"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_medium"
-        android:icon="@drawable/ic_search"
         android:title="Intermediate"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_hard"
-        android:icon="@drawable/ic_search"
         android:title="Advanced"
         app:showAsAction="never" />
 </menu>
