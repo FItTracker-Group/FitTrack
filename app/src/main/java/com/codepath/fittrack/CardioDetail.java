@@ -1,5 +1,6 @@
 package com.codepath.fittrack;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 
@@ -29,6 +31,7 @@ public class CardioDetail extends AppCompatActivity {
     private RecyclerView rvCardioExercises;
     protected VideoAdapter adapter;
     Vector<Video> videos = new Vector<Video>();
+    private String selectedFilter = "all";
 
 
     @Override
@@ -114,5 +117,58 @@ public class CardioDetail extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_easy:
+                filterList("easy");
+                return true;
+
+            case R.id.action_medium:
+                filterList("medium");
+                return true;
+
+            case R.id.action_hard:
+                filterList("hard");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void filterList(String status)
+    {
+        selectedFilter = status;
+        ArrayList<Video> filteredVideos = new ArrayList<Video>();
+
+        for(Video video : videos)
+        {
+            if(video.getVideoDifficulty().equals(status)){
+                video.setVideoUrl(video.getVideoUrl());
+                filteredVideos.add(video);
+            }
+        }
+        adapter = new VideoAdapter(getApplicationContext(), filteredVideos);
+        rvCardioExercises.setAdapter(adapter);
+    }
+
+    public void allFilterTapped(View view){
+        selectedFilter ="all";
+        adapter = new VideoAdapter(getApplicationContext(), videos);
+        rvCardioExercises.setAdapter(adapter);
+    }
+
+    public void easyFilterTapped(View view){
+        filterList("easy");
+    }
+
+    public void mediumFilterTapped(View view){
+        filterList("medium");
+    }
+
+    public void hardFilterTapped(View view){
+        filterList("hard");
     }
 }

@@ -40,7 +40,7 @@
         android:padding="15dp"
         android:paddingStart="20dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +52,8 @@
         android:background="@drawable/btn_bg"
         android:padding="10dp"
         android:text="LOGIN"
-        android:textColorHighlight="#000000" />
+        android:textColorHighlight="#000000"
+        android:textColor="@color/white"/>
 
     <ImageView
         android:id="@+id/imageView"

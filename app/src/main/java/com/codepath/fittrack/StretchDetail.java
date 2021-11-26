@@ -43,7 +43,7 @@ public class StretchDetail extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
-
+        invalidateOptionsMenu();
         rvStretchExercises = findViewById(R.id.rvStretchExercises);
 
 
@@ -75,12 +75,19 @@ public class StretchDetail extends AppCompatActivity {
             }
         });
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu, menu);
         MenuItem menuItem = menu.findItem(R.id.action_search);
+        menuItem.setVisible(true);
+        MenuItem easy = menu.findItem(R.id.action_easy);
+        MenuItem medium = menu.findItem(R.id.action_medium);
+        MenuItem hard = menu.findItem(R.id.action_hard);
+        easy.setVisible(false);
+        medium.setVisible(false);
+        hard.setVisible(false);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);

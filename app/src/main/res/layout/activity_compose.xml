@@ -36,7 +36,7 @@
         tools:layout_editor_absoluteY="23dp" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCaptureImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,10 +44,11 @@
         android:layout_marginTop="160dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/btn_bg"
-        android:text="Take Picture" />
+        android:text="Take Picture"
+        android:textColor="@color/white"/>
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,7 +56,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/btn_bg"
-        android:text="Submit" />
+        android:text="Submit"
+        android:textColor="@color/white"/>
 
 
 </LinearLayout>
