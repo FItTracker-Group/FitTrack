@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#A3E1D7"
+        android:background="@color/toolbar"
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="@android:color/white">
 
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="All"
-            android:textColor="@color/white"
+            android:textColor="@color/tab_text"
             android:id="@+id/allFilter"
             android:background="@drawable/btn_tab"
             android:onClick="allFilterTapped">
@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="Easy"
-            android:textColor="@color/white"
+            android:textColor="@color/tab_text"
             android:id="@+id/easyFilter"
             android:background="@drawable/btn_tab"
             android:onClick="easyFilterTapped">
@@ -59,7 +59,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="Medium"
-            android:textColor="@color/white"
+            android:textColor="@color/tab_text"
             android:id="@+id/mediumFilter"
             android:background="@drawable/btn_tab"
             android:onClick="mediumFilterTapped">
@@ -70,7 +70,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="Hard"
-            android:textColor="@color/white"
+            android:textColor="@color/tab_text"
             android:id="@+id/hardFilter"
             android:background="@drawable/btn_tab"
             android:onClick="hardFilterTapped">
@@ -81,7 +81,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CEE8D6"
+        android:background="@color/rvColor"
         tools:context=".CardioDetail">
 
 

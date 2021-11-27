@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="380dp"
-    android:background="#CEE8D6"
+    android:background="@color/rvColor"
     android:orientation="vertical"
     tools:context=".Video">
 
@@ -17,16 +17,16 @@
         android:layout_marginRight="8dp"
         android:textSize="20sp"
         tools:text="The PERFECT Beginner Workout (Sets and Reps Included)"
-        android:textColor="@color/black"/>
+        android:textColor="@color/text"/>
 
 
     <WebView
+        android:id="@+id/ytVideo"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:id="@+id/ytVideo"
         android:layout_alignParentTop="true"
         android:layout_marginTop="61dp"
-        />
+        android:layout_marginEnd="3dp" />
 
     <TextView
         android:id="@+id/tvDifficulty"
@@ -40,7 +40,7 @@
         android:layout_toEndOf="@+id/tvDummy"
         android:textSize="16sp"
         tools:text="Easy"
-        android:textColor="@color/black"/>
+        android:textColor="@color/text"/>
 
     <TextView
         android:id="@+id/tvMuscleType"
@@ -54,7 +54,7 @@
         android:layout_toEndOf="@+id/tvDifficulty"
         android:textSize="14sp"
         tools:text="Chest"
-        android:textColor="@color/black"/>
+        android:textColor="@color/text"/>
 
     <TextView
         android:id="@+id/tvDummy"
@@ -65,13 +65,13 @@
         android:layout_marginBottom="8dp"
         android:text="Difficulty:"
         android:textSize="16sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/text"/>
 
     <View
         android:layout_width="wrap_content"
         android:layout_height="2dp"
         android:layout_marginTop="350dp"
-        android:background="@color/black" />
+        android:background="@color/text" />
 
 
 </RelativeLayout>

@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#A3E1D7"
+        android:background="@color/toolbar"
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="@android:color/white">
 
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        android:backgroundTint="#CEE8D6"
+        android:backgroundTint="@color/rvColor"
         tools:context=".fragments.UserFragment">
 
         <!-- TODO: Update blank fragment layout -->
@@ -72,7 +72,7 @@
 
             android:layout_toEndOf="@+id/ivProfileImage"
             android:text="TextView"
-            android:textColor="#000000"
+            android:textColor="@color/text"
             android:textSize="20sp"
             android:textStyle="bold"
             tools:text="name?" />
@@ -93,7 +93,7 @@
             android:paddingEnd="14dp"
             android:paddingBottom="8dp"
             android:text="TextView"
-            android:textColor="#000000"
+            android:textColor="@color/text"
             tools:text="a long or short description about themselves" />
 
     </RelativeLayout>

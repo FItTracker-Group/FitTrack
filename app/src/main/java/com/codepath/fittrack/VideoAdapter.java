@@ -41,7 +41,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     public VideoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View videoView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
         WebView webView = videoView.findViewById(R.id.ytVideo);
-        webView.setBackgroundColor(Color.parseColor("#CEE8D6"));
+        webView.setBackgroundColor(Color.parseColor("#000000"));
         return new VideoAdapter.ViewHolder(videoView);
     }
 
