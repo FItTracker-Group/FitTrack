@@ -9,8 +9,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.codepath.fittrack.fragments.LoginFragment;
 import com.codepath.fittrack.fragments.RegisterFragment;
 
-public class FragementAdapter extends FragmentStateAdapter {
-    public FragementAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+public class FragmentAdapter extends FragmentStateAdapter {
+    public FragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 

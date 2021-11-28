@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CEE8D6"
+    android:background="@color/rvColor"
     tools:context=".LoginActivity">
 
     <com.google.android.material.tabs.TabLayout
@@ -17,7 +17,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:background="#A3E1D7"
+        android:background="@color/tab"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="-9dp" />
@@ -31,6 +31,6 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="61dp"
-        android:background="#0FFFFFFF" />
+        android:background="@color/rvColor" />
 
 </RelativeLayout>
