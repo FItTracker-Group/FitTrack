@@ -21,9 +21,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.codepath.fittrack.fragments.UserFragment;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -34,11 +38,13 @@ import java.util.List;
 public class EditUserInfoActivity extends AppCompatActivity {
     public static final String TAG = "EditUserInfoActivity";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
-    private EditText etDescription;
+
+    private String userObjectID;
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
-    private Button btnLogout;
+    private EditText etTextPersonName;
+    private EditText etTextDescription;
 
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -48,11 +54,11 @@ public class EditUserInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_info);
 
-        etDescription = findViewById(R.id.etDescription);
+        etTextPersonName = findViewById(R.id.etTextPersonName);
+        etTextDescription = findViewById(R.id.etTextDescription);
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
-        btnLogout = findViewById(R.id.btnLogout);
         // queryPosts();
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,31 +70,17 @@ public class EditUserInfoActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String description = etDescription.getText().toString();
+                String newdescription = etTextDescription.getText().toString();
+                String newName = etTextPersonName.getText().toString();
                 //Prepare data intent
                 Intent data = new Intent();
 
-                if(description.isEmpty()){
-                    Toast.makeText(EditUserInfoActivity.this, "Description cannot be empty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(photoFile==null || ivPostImage.getDrawable()==null){
-                    Toast.makeText(EditUserInfoActivity.this, "There is no image", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, photoFile);
-                findUserInfo(currentUser);
+                saveChange(newName,newdescription,photoFile);
                 //Activity finished
-                setResult(RESULT_OK, data); //set result code and bundle data for response
+                //setResult(RESULT_OK, data); //set result code and bundle data for response
                 finish(); //close the activity, pass the data back to feed
             }
         });
-    }
-
-    private void findUserInfo(ParseUser currentUser) {
-        String username = currentUser.getUsername();
-        String email = currentUser.getEmail();
     }
 
     ActivityResultLauncher<Intent> someAcitivityResultLauncher = registerForActivityResult(
@@ -142,47 +134,34 @@ public class EditUserInfoActivity extends AppCompatActivity {
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
             Log.d(TAG, "failed to create directory");
-            Log.d(TAG, "failed to create directory");
         }
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
 
-    private void savePost(String description, ParseUser currentUser, File photoFile) {
-        Post post = new Post();
-        post.setDescription(description);
-        post.setImage(new ParseFile(photoFile));
-        post.setUser(currentUser);
-        post.saveInBackground(new SaveCallback() {
+    public void saveChange (String newName,String newDescription, File photoFile) {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if(!newName.isEmpty()){
+            currentUser.put("username", newName);
+        }
+        if(!newDescription.isEmpty()){
+            currentUser.put("userDescription", newDescription);
+        }
+        if(photoFile!=null){
+            ParseFile newFile=new ParseFile(photoFile, "photo.jpg");
+            currentUser.put("profileImage", newFile);
+        }
+        currentUser.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if(e != null){
-                    Log.e(TAG, "Error while saving the post", e);
-                    Toast.makeText(EditUserInfoActivity.this, "Error while saving", Toast.LENGTH_SHORT).show();
+                if (e != null){
+                    Log.e(TAG, "Error with uploading", e);
                     return;
                 }
-                Log.i(TAG, "Post saved Successfully ! ");
-                etDescription.setText("");
-                ivPostImage.setImageResource(0);
+                Toast.makeText(getApplicationContext(), "Uploaded Successfully", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void queryPosts() {
-        // Specify which class to query
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        //include the for querying other database we want to include User
-        query.include(Post.KEY_USER);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if(e != null){
-                    Log.e(TAG, "Issue with geting Posts", e);
-                }
-                for(Post post : posts){
-                    Log.i(TAG, "Post: " + post.getDescription() + " " + post.getUser().getUsername());
-                }
-            }
-        });
-    }
+
 }
