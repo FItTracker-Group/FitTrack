@@ -45,6 +45,7 @@ public class UserFragment extends Fragment {
     private ImageView ivProfileImage;
     private Button btnLogout;
     private UserInfo currentUserInfo;
+    public View globalView;
 
     public UserFragment() {
         // Required empty public constructor
@@ -126,6 +127,9 @@ public class UserFragment extends Fragment {
             Intent intent = new Intent(getActivity(), EditUserInfoActivity.class);
             startActivityForResult(intent, REQUEST_CODE);
             return true;
+        }
+        if(item.getItemId() == R.id.action_logout) {
+            goLoginActivity(globalView);
         }
         return super.onOptionsItemSelected(item);
     }
