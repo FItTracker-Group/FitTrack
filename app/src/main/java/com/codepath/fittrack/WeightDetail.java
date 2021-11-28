@@ -47,6 +47,7 @@ public class WeightDetail extends AppCompatActivity {
 
 
         rvWeightExercises = findViewById(R.id.rvWeightExercises);
+        rvWeightExercises.setHasFixedSize(true);
         YouTubePlayerView youTubePlayerView = findViewById(R.id.ytVideo);
 
         videos = new ArrayList<>();
@@ -60,6 +61,7 @@ public class WeightDetail extends AppCompatActivity {
     protected void queryVideos() {
         // Specify which class to query
         ParseQuery<Video> query = ParseQuery.getQuery(Video.class);
+        query.whereEqualTo("Category", "weight");
         query.addDescendingOrder(Video.VIDEO_DIFFICULTY);
         query.findInBackground(new FindCallback<Video>() {
             @Override
@@ -71,13 +73,13 @@ public class WeightDetail extends AppCompatActivity {
                 List<Video> mediumList = new ArrayList<>();
                 List<Video> hardList = new ArrayList<>();
                 for(Video video : list){
-                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("easy")){
+                    if(video.getVideoDifficulty().equals("easy")){
                         easyList.add(video);
                     }
-                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("medium")){
+                    else if(video.getVideoDifficulty().equals("medium")){
                         mediumList.add(video);
                     }
-                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("hard")){
+                    else if(video.getVideoDifficulty().equals("hard")){
                         hardList.add(video);
                     }
                         Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
@@ -86,7 +88,7 @@ public class WeightDetail extends AppCompatActivity {
                 videos.addAll(mediumList);
                 videos.addAll(hardList);
 
-                adapter = new VideoAdapter(getApplicationContext(), videos);
+                adapter = new VideoAdapter(getApplicationContext(), videos, getLifecycle());
                 rvWeightExercises.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

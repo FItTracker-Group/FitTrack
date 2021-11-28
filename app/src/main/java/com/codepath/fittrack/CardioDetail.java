@@ -1,11 +1,13 @@
 package com.codepath.fittrack;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -26,14 +28,19 @@ public class CardioDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weight_detail);
-        getSupportActionBar().setTitle("                     Cardio Workout");
+        setContentView(R.layout.activity_cardio_detail);
 
-        rvCardioExercises = findViewById(R.id.rvWeightExercises);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
+
+        rvCardioExercises = findViewById(R.id.rvCardioExercises);
         YouTubePlayerView youTubePlayerView = findViewById(R.id.ytVideo);
 
         videos = new ArrayList<>();
-        adapter = new VideoAdapter(this, videos);
+        adapter = new VideoAdapter(this, videos, getLifecycle());
         rvCardioExercises.setAdapter(adapter);
         rvCardioExercises.setLayoutManager(new LinearLayoutManager(this));
         queryVideos();

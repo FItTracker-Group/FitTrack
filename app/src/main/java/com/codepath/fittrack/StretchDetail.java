@@ -1,12 +1,14 @@
 package com.codepath.fittrack;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -31,13 +33,18 @@ public class StretchDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stretch_detail);
-        getSupportActionBar().setTitle("                    Stretching");
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
 
         rvStretchExercises = findViewById(R.id.rvStretchExercises);
         YouTubePlayerView youTubePlayerView = findViewById(R.id.ytVideo);
 
         videos = new ArrayList<>();
-        adapter = new VideoAdapter(this, videos);
+        adapter = new VideoAdapter(this, videos, getLifecycle());
         rvStretchExercises.setAdapter(adapter);
         rvStretchExercises.setLayoutManager(new LinearLayoutManager(this));
         queryVideos();
