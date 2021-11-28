@@ -5,12 +5,15 @@ import com.parse.ParseObject;
 
 @ParseClassName("Video")
 public class Video extends ParseObject {
-    public static final String VIDEO_URL = "Url";
+    public static final String VIDEO_URL = "VideoUrl";
     public static final String VIDEO_TITLE = "Title";
     public static final String VIDEO_DIFFICULTY = "Difficulty";
     public static final String MUSCLE_TYPE = "MuscleType";
     public static final String VIDEO_ID = "VideoId";
     public static final String VIDEO_CATEGORY = "Category";
+
+    public Video(){}
+    public Video(String videoUrl){ put(VIDEO_URL, videoUrl); }
 
     //Getters
     public String getVideoUrl() { return getString(VIDEO_URL); }

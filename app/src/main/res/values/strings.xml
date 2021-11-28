@@ -10,4 +10,7 @@
     <string name="Weight">Weight</string>
     <string name="Logo">Logo</string>
     <string name="action_user_edit">action_user_edit</string>
+    <string name="Weight_Training">Weight Training</string>
+    <string name="user_feed">User Feed</string>
+    <string name="profile">Profile</string>
 </resources>

@@ -112,6 +112,7 @@ public class RegisterFragment extends Fragment {
                 } else {
                     Log.i(TAG, "Sign up successful");
                     goLoginActivity();
+                    // put extra info
                 }
             });
         });

@@ -7,11 +7,13 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home"
         app:showAsAction="always" />
+
     <item
-        android:id="@+id/nav_meal"
-        android:icon="@drawable/ic_baseline_set_meal_24"
-        android:title="Meal"
+        android:id="@+id/nav_timer"
+        android:icon="@drawable/ic_baseline_access_time_24"
+        android:title="Timer"
         app:showAsAction="always" />
+
     <item
         android:id="@+id/nav_feed"
         android:icon="@drawable/ic_baseline_dynamic_feed_24"
