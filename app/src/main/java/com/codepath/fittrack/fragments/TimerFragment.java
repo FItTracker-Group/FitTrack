@@ -29,6 +29,8 @@ public class TimerFragment extends Fragment {
     private AppCompatButton btMinus5;
     private AppCompatButton btPlus1;
     private AppCompatButton btMinus1;
+    private AppCompatButton btPlus30;
+    private AppCompatButton btMinus30;
 
     private CountDownTimer mCountDownTimer;
 
@@ -55,6 +57,8 @@ public class TimerFragment extends Fragment {
         btPlus1 = view.findViewById(R.id.btPlus1);
         btMinus5 = view.findViewById(R.id.btMinus5);
         btMinus1 = view.findViewById(R.id.btMinus1);
+        btPlus30 = view.findViewById(R.id.btPlus30);
+        btMinus30 = view.findViewById(R.id.btMinus30);
 
         btStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +128,31 @@ public class TimerFragment extends Fragment {
             }
         });
 
+        btPlus30.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mTimeLeftInMillis += 1800000;
+                updateCountDownText();
+            }
+        });
+
+        btMinus30.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mTimeLeftInMillis > 1800000){
+                    mTimeLeftInMillis -= 1800000;
+                    updateCountDownText();
+                } else{
+                    mTimeLeftInMillis = 0;
+                    Toast.makeText(getActivity(), "You cannot decrease the timer any further", Toast.LENGTH_SHORT).show();
+                    updateCountDownText();
+                    btStartPause.setVisibility(View.INVISIBLE);
+                    btReset.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
         updateCountDownText();
     }
 
@@ -151,6 +180,8 @@ public class TimerFragment extends Fragment {
             btPlus1.setVisibility(View.INVISIBLE);
             btMinus5.setVisibility(View.INVISIBLE);
             btMinus1.setVisibility(View.INVISIBLE);
+            btPlus30.setVisibility(View.INVISIBLE);
+            btMinus30.setVisibility(View.INVISIBLE);
         }
         else{
             Toast.makeText(getActivity(), "Increase the time", Toast.LENGTH_SHORT).show();
@@ -174,6 +205,8 @@ public class TimerFragment extends Fragment {
         btPlus1.setVisibility(View.VISIBLE);
         btMinus5.setVisibility(View.VISIBLE);
         btMinus1.setVisibility(View.VISIBLE);
+        btPlus30.setVisibility(View.VISIBLE);
+        btMinus30.setVisibility(View.VISIBLE);
     }
 
     private void updateCountDownText(){
