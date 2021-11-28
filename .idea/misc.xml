@@ -91,6 +91,15 @@
         <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/fragment_login.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/fragment_register.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/yiren/Desktop/Andrioddev/FitTrack/app/src/main/res/layout/fragment_user.xml" value="0.30416666666666664" />
+        <entry key="app/src/main/res/drawable/btn_bg.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/btn_tab.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/btn_timer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_timer.xml" value="0.2720184326171875" />
+        <entry key="app/src/main/res/menu/button_navigation.xml" value="0.15364583333333334" />
+        <entry key="app/src/main/res/menu/feed_menu.xml" value="0.15364583333333334" />
+        <entry key="app/src/main/res/menu/search_menu.xml" value="0.15364583333333334" />
+        <entry key="app/src/main/res/menu/user_edit_menu.xml" value="0.15364583333333334" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.17037037037037037" />
       </map>
     </option>
   </component>

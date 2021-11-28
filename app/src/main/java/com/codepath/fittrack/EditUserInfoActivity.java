@@ -142,7 +142,7 @@ public class EditUserInfoActivity extends AppCompatActivity {
     public void saveChange (String newName,String newDescription, File photoFile) {
         ParseUser currentUser = ParseUser.getCurrentUser();
         if(!newName.isEmpty()){
-            currentUser.put("username", newName);
+            currentUser.put("displayName", newName);
         }
         if(!newDescription.isEmpty()){
             currentUser.put("userDescription", newDescription);
