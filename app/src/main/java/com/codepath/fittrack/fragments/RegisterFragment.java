@@ -103,7 +103,8 @@ public class RegisterFragment extends Fragment {
             user.setEmail(etEmail.getText().toString());
             user.setUsername(etUsername.getText().toString());
             user.setPassword(etPassword.getText().toString());
-
+            user.put("displayName",etUsername.getText().toString());
+            user.put("userDescription","Change your profile image and user description by clicking the gear icon on the top right");
 
 
             user.signUpInBackground(e -> {
