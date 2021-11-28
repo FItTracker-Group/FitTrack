@@ -24,7 +24,9 @@ import com.codepath.fittrack.EditUserInfoActivity;
 import com.codepath.fittrack.LoginActivity;
 import com.codepath.fittrack.R;
 import com.codepath.fittrack.UserInfo;
+import com.parse.Parse;
 import com.parse.ParseFile;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 /**
@@ -83,8 +85,7 @@ public class UserFragment extends Fragment {
         setHasOptionsMenu(true);
 
         //gets user information
-        displayUser();
-        //TODO:set userinformation when user signsup
+        DisplayUser();
         //onclick listener to log user out not complete
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,16 +95,13 @@ public class UserFragment extends Fragment {
         });
     }
 
-    private void displayUser() {
+    private void DisplayUser() {
         ParseUser currentUser= ParseUser.getCurrentUser();
-        tvProfileName.setText(currentUser.getUsername());
-        tvProfileDescription.setText(currentUser.getString(KEY_DESCRIPTION));
-        ParseFile image = currentUser.getParseFile(KEY_PROFILE_IMAGE);
-        if(image!=null){
-            if(getContext()==null){
-                return;
-            }
-            Glide.with(getContext()).load(image.getUrl()).into(ivProfileImage);
+        tvProfileName.setText(currentUser.getString("displayName").toString());
+        tvProfileDescription.setText(currentUser.getString("userDescription").toString());
+        ParseFile image = currentUser.getParseFile("profileImage");
+        if(image != null){
+            Glide.with(this.getContext()).load(image.getUrl()).into(ivProfileImage);;
         }
     }
 
