@@ -1,5 +1,6 @@
 package com.codepath.fittrack;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -11,22 +12,24 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class YogaDetail extends AppCompatActivity {
     public static final String TAG = "YogaDetail";
     private RecyclerView rvYogaExercises;
     protected VideoAdapter adapter;
-    protected List<Video> videos;
+    Vector<Video> videos = new Vector<Video>();
+    private String selectedFilter = "all";
 
 
     @Override
@@ -42,9 +45,9 @@ public class YogaDetail extends AppCompatActivity {
 
 
         rvYogaExercises = findViewById(R.id.rvYogaExercises);
-        YouTubePlayerView youTubePlayerView = findViewById(R.id.ytVideo);
 
-        videos = new ArrayList<>();
+
+        videos = new Vector<Video>();
         //adapter = new VideoAdapter(this, videos);
         //rvWeightExercises.setAdapter(adapter);
         rvYogaExercises.setLayoutManager(new LinearLayoutManager(this));
@@ -67,12 +70,15 @@ public class YogaDetail extends AppCompatActivity {
                 List<Video> hardList = new ArrayList<>();
                 for(Video video : list){
                     if(video.getVideoCategory().equals("yoga") && video.getVideoDifficulty().equals("easy")){
+                        video.setVideoUrl(video.getVideoUrl());
                         easyList.add(video);
                     }
                     if(video.getVideoCategory().equals("yoga") && video.getVideoDifficulty().equals("medium")){
+                        video.setVideoUrl(video.getVideoUrl());
                         mediumList.add(video);
                     }
                     if(video.getVideoCategory().equals("yoga") && video.getVideoDifficulty().equals("hard")){
+                        video.setVideoUrl(video.getVideoUrl());
                         hardList.add(video);
                     }
                     Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
@@ -81,7 +87,7 @@ public class YogaDetail extends AppCompatActivity {
                 videos.addAll(mediumList);
                 videos.addAll(hardList);
 
-                adapter = new VideoAdapter(getApplicationContext(), videos, getLifecycle());
+                adapter = new VideoAdapter(getApplicationContext(), videos);
                 rvYogaExercises.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -111,5 +117,58 @@ public class YogaDetail extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_easy:
+                filterList("easy");
+                return true;
+
+            case R.id.action_medium:
+                filterList("medium");
+                return true;
+
+            case R.id.action_hard:
+                filterList("hard");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void filterList(String status)
+    {
+        selectedFilter = status;
+        ArrayList<Video> filteredVideos = new ArrayList<Video>();
+
+        for(Video video : videos)
+        {
+            if(video.getVideoDifficulty().equals(status)){
+                video.setVideoUrl(video.getVideoUrl());
+                filteredVideos.add(video);
+            }
+        }
+        adapter = new VideoAdapter(getApplicationContext(), filteredVideos);
+        rvYogaExercises.setAdapter(adapter);
+    }
+
+    public void allFilterTapped(View view){
+        selectedFilter ="all";
+        adapter = new VideoAdapter(getApplicationContext(), videos);
+        rvYogaExercises.setAdapter(adapter);
+    }
+
+    public void easyFilterTapped(View view){
+        filterList("easy");
+    }
+
+    public void mediumFilterTapped(View view){
+        filterList("medium");
+    }
+
+    public void hardFilterTapped(View view){
+        filterList("hard");
     }
 }

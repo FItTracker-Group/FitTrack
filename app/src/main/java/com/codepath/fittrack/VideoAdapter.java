@@ -1,10 +1,13 @@
 package com.codepath.fittrack;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
@@ -14,10 +17,6 @@ import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codepath.fittrack.fragments.HomeFragment;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +28,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     private Context context;
     protected List<Video> videos;
     protected List<Video> videosFull;
-    private Lifecycle lifecycle;
 
-    public VideoAdapter(Context context, List<Video> videos, Lifecycle lifecycle) {
+
+    public VideoAdapter(Context context, List<Video> videos) {
         this.context = context;
         this.videos = videos;
-        this.lifecycle = lifecycle;
         videosFull = new ArrayList<>(videos); //create an independent copy
     }
 
@@ -42,13 +40,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     @Override
     public VideoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View videoView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
-        YouTubePlayerView youTubePlayerView = videoView.findViewById(R.id.ytVideo);
-        lifecycle.addObserver(youTubePlayerView);
+        WebView webView = videoView.findViewById(R.id.ytVideo);
+        webView.setBackgroundColor(Color.parseColor("#000000"));
         return new VideoAdapter.ViewHolder(videoView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.videoWeb.loadData(videos.get(position).getVideoUrl(),"text/html","utf-8");
         Video video = videos.get(position);
         holder.bind(video);
     }
@@ -100,7 +99,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private YouTubePlayerView youTubePlayerView;
+        WebView videoWeb;
         private TextView tvTitle;
         private TextView difficulty;
         private TextView muscleType;
@@ -111,8 +110,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             tvTitle = itemView.findViewById(R.id.tvTitle);
             difficulty = itemView.findViewById(R.id.tvDifficulty);
             muscleType = itemView.findViewById(R.id.tvMuscleType);
-            youTubePlayerView = itemView.findViewById(R.id.ytVideo);
-            //lifecycle.addObserver(youTubePlayerView);
+            videoWeb = (WebView) itemView.findViewById(R.id.ytVideo);
+            videoWeb.getSettings().setJavaScriptEnabled(true);
+            videoWeb.setWebChromeClient(new WebChromeClient());
+
         }
 
         public void bind(Video video) {
@@ -120,14 +121,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             difficulty.setText(video.getVideoDifficulty());
             String videoId = video.getVideoId();
 
-            youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-                @Override
-                public void onReady(YouTubePlayer youTubePlayer) {
-                    super.onReady(youTubePlayer);
-                    //String videoId = video.getVideoId();
-                    youTubePlayer.cueVideo(videoId, 0f);
-                }
-            });
 
 
             if(video.getVideoCategory().equals("weight") || video.getVideoCategory().equals("stretch"))

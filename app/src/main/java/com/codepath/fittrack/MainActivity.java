@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.codepath.fittrack.fragments.FeedFragment;
 import com.codepath.fittrack.fragments.HomeFragment;
 import com.codepath.fittrack.fragments.MealFragment;
+import com.codepath.fittrack.fragments.TimerFragment;
 import com.codepath.fittrack.fragments.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -39,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         fragment = new HomeFragment();
                         break;
-                    /*case R.id.nav_meal:
-                        fragment = new MealFragment();
+                    case R.id.nav_timer:
+                        fragment = new TimerFragment();
                         //fragment = new ComposeFragment();
-                        break;*/
+                        break;
                     case R.id.nav_feed:
                         fragment = new FeedFragment();
                         break;

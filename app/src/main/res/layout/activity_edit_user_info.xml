@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="0dp"
-    android:background="#CEE8D6"
+    android:background="@color/rvColor"
     android:orientation="vertical"
     tools:context=".EditUserInfoActivity">
 
@@ -35,7 +35,7 @@
         android:text="Take a new profile picture below"
         android:textSize="20sp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCaptureImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +43,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="90dp"
         android:background="@drawable/btn_bg"
-        android:text="Take Picture" />
+        android:text="Take Picture"
+        android:textColor="@color/white"/>
 
 
     <ImageView
@@ -54,7 +55,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,6 +63,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/btn_bg"
-        android:text="Submit" />
+        android:text="Submit"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

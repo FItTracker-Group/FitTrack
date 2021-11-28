@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#A3E1D7"
+        android:background="@color/toolbar"
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="@android:color/white">
 
@@ -26,10 +26,62 @@
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/app_background">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="All"
+            android:textColor="@color/tab_text"
+            android:id="@+id/allFilter"
+            android:background="@drawable/btn_tab"
+            android:onClick="allFilterTapped">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Easy"
+            android:textColor="@color/tab_text"
+            android:id="@+id/easyFilter"
+            android:background="@drawable/btn_tab"
+            android:onClick="easyFilterTapped">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Medium"
+            android:textColor="@color/tab_text"
+            android:id="@+id/mediumFilter"
+            android:background="@drawable/btn_tab"
+            android:onClick="mediumFilterTapped">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Hard"
+            android:textColor="@color/tab_text"
+            android:id="@+id/hardFilter"
+            android:background="@drawable/btn_tab"
+            android:onClick="hardFilterTapped">
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CEE8D6"
+        android:background="@color/rvColor"
         tools:context=".CardioDetail">
 
 
