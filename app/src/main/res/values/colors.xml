@@ -7,5 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="standard_color">#137DC5</color>
+    <color name="blue">#137DC5</color>
+    <color name="app_background">#FF000000</color>
+    <color name="ice">#CEE8D6</color>
+    <color name="tab_text">#000000</color>
+    <color name="rvColor">#bdcad9</color>
+    <color name="toolbar">#9DB7D5</color>
+    <color name="tab">#5C98D6</color>
+    <color name="nav_bar">#9BB5D3</color>
+    <color name="text">#000000</color>
 </resources>

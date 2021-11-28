@@ -1,51 +1,69 @@
 package com.codepath.fittrack;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class WeightDetail extends AppCompatActivity {
 
     public static final String TAG = "WeightDetail";
     private RecyclerView rvWeightExercises;
     protected VideoAdapter adapter;
-    protected List<Video> videos;
+    Vector<Video> videos = new Vector<Video>();
+    private String selectedFilter = "all";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight_detail);
-        getSupportActionBar().setTitle("                    Weight Training");
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
+
 
         rvWeightExercises = findViewById(R.id.rvWeightExercises);
-        YouTubePlayerView youTubePlayerView = findViewById(R.id.ytVideo);
+        rvWeightExercises.setHasFixedSize(true);
 
-        videos = new ArrayList<>();
-        adapter = new VideoAdapter(this, videos);
+        //videos = new Vector<Video>();
+        //adapter = new VideoAdapter(WeightDetail.this, videos);
         rvWeightExercises.setAdapter(adapter);
         rvWeightExercises.setLayoutManager(new LinearLayoutManager(this));
         queryVideos();
     }
 
+
     protected void queryVideos() {
         // Specify which class to query
         ParseQuery<Video> query = ParseQuery.getQuery(Video.class);
+        query.whereEqualTo("Category", "weight");
         query.addDescendingOrder(Video.VIDEO_DIFFICULTY);
         query.findInBackground(new FindCallback<Video>() {
             @Override
@@ -57,22 +75,106 @@ public class WeightDetail extends AppCompatActivity {
                 List<Video> mediumList = new ArrayList<>();
                 List<Video> hardList = new ArrayList<>();
                 for(Video video : list){
-                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("easy")){
+                    if(video.getVideoDifficulty().equals("easy")){
+                        video.setVideoUrl(video.getVideoUrl());
                         easyList.add(video);
                     }
-                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("medium")){
+                    if(video.getVideoDifficulty().equals("medium")){
+                        video.setVideoUrl(video.getVideoUrl());
                         mediumList.add(video);
                     }
-                    if(video.getVideoCategory().equals("weight") && video.getVideoDifficulty().equals("hard")){
+                    if(video.getVideoDifficulty().equals("hard")){
+                        video.setVideoUrl(video.getVideoUrl());
                         hardList.add(video);
                     }
-                        Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
+                    Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
                 }
                 videos.addAll(easyList);
                 videos.addAll(mediumList);
                 videos.addAll(hardList);
+
+                adapter = new VideoAdapter(getApplicationContext(), videos);
+                rvWeightExercises.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setQueryHint("Type here to search");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_easy:
+                filterList("easy");
+                return true;
+
+            case R.id.action_medium:
+                filterList("medium");
+                return true;
+
+            case R.id.action_hard:
+                filterList("hard");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void filterList(String status)
+    {
+        selectedFilter = status;
+        ArrayList<Video> filteredVideos = new ArrayList<Video>();
+
+        for(Video video : videos)
+        {
+            if(video.getVideoDifficulty().equals(status)){
+                video.setVideoUrl(video.getVideoUrl());
+                filteredVideos.add(video);
+            }
+        }
+        adapter = new VideoAdapter(getApplicationContext(), filteredVideos);
+        rvWeightExercises.setAdapter(adapter);
+    }
+
+    public void allFilterTapped(View view){
+        selectedFilter ="all";
+        adapter = new VideoAdapter(getApplicationContext(), videos);
+        rvWeightExercises.setAdapter(adapter);
+    }
+
+    public void easyFilterTapped(View view){
+        filterList("easy");
+    }
+
+    public void mediumFilterTapped(View view){
+        filterList("medium");
+    }
+
+    public void hardFilterTapped(View view){
+        filterList("hard");
     }
 }
