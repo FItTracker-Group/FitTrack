@@ -23,11 +23,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="313dp"
-        android:text="Start"
+        android:layout_marginStart="43dp"
+        android:layout_marginBottom="314dp"
         android:background="@drawable/btn_timer"
-        android:textColor="@color/white"/>
+        android:text="Start"
+        android:textColor="@color/white" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btReset"
@@ -38,20 +38,20 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="43dp"
         android:layout_marginBottom="314dp"
-        android:text="Reset"
-        android:visibility="invisible"
-        tools:visibility="visible"
         android:background="@drawable/btn_timer"
-        android:textColor="@color/white"/>
+        android:text="Reset"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btPlus5"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="230dp"
-        android:layout_marginBottom="177dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="190dp"
         android:background="@drawable/btn_timer"
         android:text="+5 Min"
         android:textColor="@color/white" />
@@ -61,11 +61,9 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="105dp"
-        android:layout_marginEnd="218dp"
-        android:layout_marginBottom="175dp"
+        android:layout_marginBottom="190dp"
         android:background="@drawable/btn_timer"
         android:text="+1 Min"
         android:textColor="@color/white" />
@@ -74,10 +72,10 @@
         android:id="@+id/btMinus5"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="233dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/btn_timer"
         android:text="-5 Min"
         android:textColor="@color/white" />
@@ -86,10 +84,10 @@
         android:id="@+id/btMinus1"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="216dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/btn_timer"
         android:text="-1 Min"
         android:textColor="@color/white" />
