@@ -10,17 +10,25 @@
 
     <TextView
         android:id="@+id/tvUsername"
-        android:layout_width="match_parent"
+        android:layout_width="203dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Username"
+        android:textColor="@color/text"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:text="00:00"
+        android:textColor="@color/black" />
 
     <ImageView
         android:id="@+id/ivImage"
@@ -54,5 +62,7 @@
         android:textColor="@color/text"
         app:layout_constraintTop_toBottomOf="@+id/ivImage"
         tools:layout_editor_absoluteX="96dp" />
+
+
 
 </LinearLayout>
