@@ -63,7 +63,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private ImageView ivImage;
         private TextView tvDescription;
         private TextView tvDate;
-        DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+        DateFormat df = new SimpleDateFormat("MMM dd, yyyy 'at' hh:mm aaa");
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
