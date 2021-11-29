@@ -40,7 +40,7 @@ A fitness application designed to help people learn about various exercises and 
 - [x] User can make a post to the feed
 
 **Optional Nice-to-have Stories**
-- [ ] Weekly Weight Tracker - can upload pictures of themselves
+- [x] Weekly Weight Tracker
 - [ ] Meal Recommendations
 - [ ] Comment section/rating
 - [ ] Point System
