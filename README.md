@@ -30,11 +30,11 @@ A fitness application designed to help people learn about various exercises and 
 - [x] Users can follow a video from our app and do the exercises separated by categories
     - [x] Yoga
     - [x] Weight training
-    - [ ] Stretching
-    - [ ] Cardio
+    - [x] Stretching
+    - [x] Cardio
 - [x] Created Home Screen with exercise categories that lead to another detailed screen
-- [ ] Profile fragment
-    - [ ] Users can edit their own Profile information
+- [x] Profile fragment
+    - [x] Users can edit their own Profile information
     - [x] Users information is parsed and displayed
 - [x] User feed to communicate their progress with other users
 - [x] User can make a post to the feed
@@ -46,7 +46,9 @@ A fitness application designed to help people learn about various exercises and 
 - [ ] Point System
 - [ ] Feature the workout of the day/week
 - [ ] Friend List and comparing their workouts
-
+- [x] User can time their workout or set a timer for rest periods
+- [x] User can navigate workouts with a search bar
+- [ ] Users can find personal training coaches
 
 **Current Progress GIFS**
 
