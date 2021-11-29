@@ -41,8 +41,8 @@
             android:layout_height="180dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="47dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="21dp"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -50,8 +50,8 @@
             android:layout_width="183dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="61dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="51dp"
             android:layout_marginEnd="-47dp"
 
             android:layout_toEndOf="@+id/ivProfileImage"
@@ -63,13 +63,13 @@
 
         <TextView
             android:id="@+id/tvProfileDescription"
-            android:layout_width="166dp"
-            android:layout_height="82dp"
-            android:layout_alignParentTop="true"
+            android:layout_width="191dp"
+            android:layout_height="110dp"
+            android:layout_below="@+id/tvProfileName"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="135dp"
-            android:layout_marginEnd="38dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="16dp"
             android:layout_toEndOf="@+id/ivProfileImage"
             android:background="@drawable/input_bg"
             android:paddingStart="14dp"
@@ -79,6 +79,88 @@
             android:text="TextView"
             android:textColor="@color/text"
             tools:text="a long or short description about themselves" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lcWeightTracker"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_below="@+id/ivProfileImage"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/input_bg">
+
+        </com.github.mikephil.charting.charts.LineChart>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lcWeightTracker"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="22dp"
+            android:text="Body Mass Index:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etBMIWeight"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/input_bg"
+            android:ems="10"
+            android:hint="Enter your weight(kg)"
+            android:inputType="numberDecimal"
+            android:paddingStart="16dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etBMIHeight"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etBMIWeight"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/input_bg"
+            android:ems="10"
+            android:hint="Enter your height(cm)"
+            android:inputType="numberDecimal"
+            android:paddingStart="16dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBMIEnter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lcWeightTracker"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="115dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/btn_bg"
+            android:text="ENTER"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvBMIResult"
+            android:layout_width="208dp"
+            android:layout_height="63dp"
+            android:layout_below="@+id/lcWeightTracker"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="27dp"
+            android:layout_toEndOf="@+id/textView2"
+            android:textStyle="bold" />
+
 
     </RelativeLayout>
 </LinearLayout>

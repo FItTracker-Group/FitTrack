@@ -1,6 +1,7 @@
 package com.codepath.fittrack.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,10 +26,17 @@ import com.codepath.fittrack.EditUserInfoActivity;
 import com.codepath.fittrack.LoginActivity;
 import com.codepath.fittrack.R;
 import com.codepath.fittrack.UserInfo;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,9 +52,14 @@ public class UserFragment extends Fragment {
     private TextView tvProfileName;
     private TextView tvProfileDescription;
     private ImageView ivProfileImage;
-    private Button btnLogout;
     private UserInfo currentUserInfo;
-    public View globalView;
+    private View globalView;
+    private LineChart lcWeightTracker;
+
+    private EditText etBMIWeight, etBMIHeight;
+    private Button btnBMIEnter;
+    private TextView tvBMIResult;
+
 
     public UserFragment() {
         // Required empty public constructor
@@ -77,7 +91,87 @@ public class UserFragment extends Fragment {
         tvProfileName = view.findViewById(R.id.tvProfileName);
         tvProfileDescription = view.findViewById(R.id.tvProfileDescription);
         ivProfileImage = view.findViewById(R.id.ivProfileImage);
-        btnLogout = view.findViewById(R.id.btnLogout);
+        globalView = view;
+        lcWeightTracker = view.findViewById(R.id.lcWeightTracker);
+
+        etBMIWeight = view.findViewById(R.id.etBMIWeight);
+        etBMIHeight = view.findViewById(R.id.etBMIHeight);
+        btnBMIEnter = view.findViewById(R.id.btnBMIEnter);
+        tvBMIResult = view.findViewById(R.id.tvBMIResult);
+
+
+        btnBMIEnter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvBMIResult.clearComposingText();
+                String s1 = etBMIWeight.getText().toString();
+                String s2 = etBMIHeight.getText().toString();
+
+                if (etBMIHeight != null && !"".equals(etBMIHeight)
+                        && etBMIWeight != null  &&  !"".equals(etBMIWeight)) {
+                    float weightValue = Float.parseFloat(s1);
+                    float heightValue = Float.parseFloat(s2) / 100;
+                    float bmi = weightValue / (heightValue * heightValue);
+
+
+                    String bmiLabel = "";
+
+                    if (Float.compare(bmi, 15f) <= 0) {
+                        bmiLabel = "Very Severely Underweight\nYou need professional advice from your doctors";
+                    } else if (Float.compare(bmi, 15f) > 0  &&  Float.compare(bmi, 16f) <= 0) {
+                        bmiLabel = "Severely Underweight\nReplenish nutrients";
+                    } else if (Float.compare(bmi, 16f) > 0  &&  Float.compare(bmi, 18.5f) <= 0) {
+                        bmiLabel = "Underweight\nImprove muscle content";
+                    } else if (Float.compare(bmi, 18.5f) > 0  &&  Float.compare(bmi, 25f) <= 0) {
+                        bmiLabel = "Health\nKeep moving!";
+                    } else if (Float.compare(bmi, 25f) > 0  &&  Float.compare(bmi, 30f) <= 0) {
+                        bmiLabel = "Overweight\nGet more exercise";
+                    } else if (Float.compare(bmi, 30f) > 0  &&  Float.compare(bmi, 35f) <= 0) {
+                        bmiLabel = "Moderately Obese\nCut down on sugar and fat";
+                    } else if (Float.compare(bmi, 35f) > 0  &&  Float.compare(bmi, 40f) <= 0) {
+                        bmiLabel = "Severely Obese\nKeep on a diet";
+                    } else {
+                        bmiLabel = "Very Severely Obese\nYou need professional advice from your doctors";
+                    }
+
+                    tvBMIResult.setText(bmiLabel);
+                }
+            }
+        });
+
+
+
+
+
+        ArrayList<Entry> yValues = new ArrayList<>();
+        yValues.add(new Entry(1, 73));
+        yValues.add(new Entry(2, 74));
+        yValues.add(new Entry(3, 75));
+        yValues.add(new Entry(4, 74));
+        yValues.add(new Entry(5, 74));
+        yValues.add(new Entry(6, 75));
+        yValues.add(new Entry(7, 75));
+        yValues.add(new Entry(8, 74));
+        yValues.add(new Entry(9, 74));
+        yValues.add(new Entry(10, 73));
+        yValues.add(new Entry(11, 74));
+        yValues.add(new Entry(12, 73));
+        yValues.add(new Entry(13, 73));
+
+
+        lcWeightTracker.setDragEnabled(true);
+        lcWeightTracker.setScaleEnabled(false);
+
+        LineDataSet setWeight = new LineDataSet(yValues, "Weight");
+        setWeight.setFillAlpha(110);
+        setWeight.setColor(Color.BLACK);
+        setWeight.setLineWidth(3f);
+        setWeight.setValueTextSize(13f);
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(setWeight);
+        LineData data = new LineData(dataSets);
+        lcWeightTracker.setData(data);
+
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
@@ -87,13 +181,8 @@ public class UserFragment extends Fragment {
 
         //gets user information
         DisplayUser();
-        //onclick listener to log user out not complete
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goLoginActivity(view);
-            }
-        });
+
+
     }
 
     private void DisplayUser() {
