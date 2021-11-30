@@ -54,7 +54,7 @@ A fitness application designed to help people learn about various exercises and 
 
 **Current Progress GIFS**
 
-<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/fittrack%20unit%2013.gif' width='200' alt='Video Walkthrough' />
+<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/FinalFitTrack.gif' width='200' alt='Video Walkthrough' />
 
 ### 2. Screen Archetypes
 
