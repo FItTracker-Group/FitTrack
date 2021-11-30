@@ -41,6 +41,7 @@ A fitness application designed to help people learn about various exercises and 
 
 **Optional Nice-to-have Stories**
 - [x] Weekly Weight Tracker
+- [ ] Users can update the weekly weight tracker with their weight and the day
 - [ ] Meal Recommendations
 - [ ] Comment section/rating
 - [ ] Point System
