@@ -224,36 +224,19 @@ public class UserFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ParseUser currentUser= ParseUser.getCurrentUser();
+        if(!data.getExtras().getString("name").isEmpty()){
+            tvProfileName.setText(data.getExtras().getString("name"));
+        }
+        if(!data.getExtras().getString("description").isEmpty()){
+            tvProfileDescription.setText(data.getExtras().getString("description"));
+        }
+        if(!data.getExtras().getString("photourl").isEmpty()){
+            Glide.with(this.getContext()).load(data.getExtras().getString("photourl")).into(ivProfileImage);;
+        }
+    }
 
-    /* query user using UserInfo no longer used
-    private void queryCurrentUser() {
-        ParseQuery<UserInfo> query = ParseQuery.getQuery(UserInfo.class);
-        query.include(UserInfo.KEY_USER);
-        query.findInBackground(new FindCallback<UserInfo>() {
-            @Override
-            public void done(List<UserInfo> usersinfo, ParseException e) {
-                if(e!=null){
-                    Log.e(TAG, "Issue with getting users", e);
-                    return;
-                }
-                //Toast.makeText(getActivity(), "hello", Toast.LENGTH_SHORT).show();
-                for(UserInfo user : usersinfo){
-                    if (user.getUser().getUsername().equals(ParseUser.getCurrentUser().getUsername())){
-                        //changing front end
-                        Log.i(TAG, user.getUsername());
-                        tvProfileName.setText(user.getUsername());
-                        tvProfileDescription.setText(user.getUserDescription());
-                        ParseFile image = user.getImage();
-                        if(image!=null){
-                            if(getContext()==null){
-                                return;
-                            }
-                            Glide.with(getContext()).load(user.getImage().getUrl()).into(ivProfileImage);
-                        }
-                        return;
-                    }
-                }
-            }
-        });
-    }*/
 }

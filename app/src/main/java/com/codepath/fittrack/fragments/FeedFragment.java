@@ -33,6 +33,8 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.parceler.Parcels;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -149,5 +151,14 @@ public class FeedFragment extends Fragment {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Post post= Parcels.unwrap(data.getParcelableExtra("post"));
+        allPosts.add(0,post);
+        adapter.notifyItemInserted(0);
+        rvPosts.smoothScrollToPosition(0);
     }
 }

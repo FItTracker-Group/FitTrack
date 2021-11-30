@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
@@ -68,7 +69,6 @@ public class StretchDetail extends AppCompatActivity {
                     videos.add(video);
                     Log.i(TAG, "Title: " + video.getVideoTitle() + ", difficulty: " + video.getVideoDifficulty() + ", muscleType: " + video.getMuscleType() + ", videoID: " + video.getVideoId());
                 }
-
                 adapter = new VideoAdapter(getApplicationContext(), videos);
                 rvStretchExercises.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
