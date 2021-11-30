@@ -140,12 +140,7 @@ public class EditUserInfoActivity extends AppCompatActivity {
     }
 
     public void saveChange (String newName,String newDescription, File photoFile, Intent data) {
-        ParseFile newFile=new ParseFile(photoFile, "photo.jpg");
-        try {
-            newFile.save();
-        } catch (ParseException e) {
-            Log.e(TAG, "couldn't save photo");
-        }
+
         data.putExtra("name",newName);
         data.putExtra("description",newDescription);
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -154,14 +149,19 @@ public class EditUserInfoActivity extends AppCompatActivity {
         }
         if(!newDescription.isEmpty()){
             currentUser.put("userDescription", newDescription);
-            //tvProfileDescription=findViewById(R.id.tvProfileDescription);
-            //tvuserName.setText(newDescription);
         }
         if(photoFile!=null){
+            ParseFile newFile=new ParseFile(photoFile, "photo.jpg");
             currentUser.put("profileImage", newFile);
+            try {
+                newFile.save();
+            } catch (ParseException e) {
+                Log.e(TAG, "couldn't save photo");
+            }
+            Log.i(TAG,"photourl: "+newFile.getUrl());
+            data.putExtra("photourl",newFile.getUrl());
         }
-        Log.i(TAG,"photourl: "+newFile.getUrl());
-        data.putExtra("photourl",newFile.getUrl());
+
         currentUser.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

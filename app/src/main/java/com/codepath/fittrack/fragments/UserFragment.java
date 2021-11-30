@@ -234,7 +234,7 @@ public class UserFragment extends Fragment {
         if(!data.getExtras().getString("description").isEmpty()){
             tvProfileDescription.setText(data.getExtras().getString("description"));
         }
-        if(!data.getExtras().getString("photourl").isEmpty()){
+        if(data.getExtras().getString("photourl")!=null && !data.getExtras().getString("photourl").isEmpty()){
             Glide.with(this.getContext()).load(data.getExtras().getString("photourl")).into(ivProfileImage);;
         }
     }
