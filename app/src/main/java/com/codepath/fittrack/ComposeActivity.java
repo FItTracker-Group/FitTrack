@@ -30,6 +30,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import org.parceler.Parcels;
+
 import java.io.File;
 import java.util.List;
 
@@ -68,7 +70,7 @@ public class ComposeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String description = etDescription.getText().toString();
                 //Prepare data intent
-                Intent data = new Intent();
+
 
                 if(description.isEmpty()){
                     Toast.makeText(ComposeActivity.this, "Description cannot be empty", Toast.LENGTH_SHORT).show();
@@ -81,9 +83,7 @@ public class ComposeActivity extends AppCompatActivity {
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
                 findUserInfo(currentUser);
-                //Activity finished
-                setResult(RESULT_OK, data); //set result code and bundle data for response
-                finish(); //close the activity, pass the data back to feed
+                 //close the activity, pass the data back to feed
             }
         });
 
@@ -167,6 +167,11 @@ public class ComposeActivity extends AppCompatActivity {
                 Log.i(TAG, "Post saved Successfully ! ");
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
+                //Activity finished
+                Intent data = new Intent();
+                data.putExtra("post", Parcels.wrap(post));
+                setResult(RESULT_OK, data); //set result code and bundle data for response
+                finish();
             }
         });
     }

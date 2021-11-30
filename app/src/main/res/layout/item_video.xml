@@ -30,48 +30,65 @@
 
     <TextView
         android:id="@+id/tvDifficulty"
-        android:layout_width="140dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="306dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toEndOf="@+id/tvDummy"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/text"
         android:textSize="16sp"
-        tools:text="Easy"
-        android:textColor="@color/text"/>
+        tools:text="Easy" />
 
     <TextView
         android:id="@+id/tvMuscleType"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="7dp"
         android:layout_marginLeft="250dp"
         android:layout_marginTop="306dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toEndOf="@+id/tvDifficulty"
-        android:textSize="14sp"
-        tools:text="Chest"
-        android:textColor="@color/text"/>
+        android:layout_marginBottom="40dp"
+        android:layout_toEndOf="@+id/tvDummy2"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        tools:text="Chest" />
 
     <TextView
         android:id="@+id/tvDummy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="37dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="306dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
+        android:layout_toStartOf="@+id/tvDifficulty"
         android:text="Difficulty:"
-        android:textSize="16sp"
-        android:textColor="@color/text"/>
+        android:textColor="@color/text"
+        android:textSize="16sp" />
 
     <View
         android:layout_width="wrap_content"
         android:layout_height="2dp"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="350dp"
         android:background="@color/text" />
+
+    <TextView
+        android:id="@+id/tvDummy2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="40dp"
+        android:text="Muscle:"
+        android:textColor="#000000"
+        android:textSize="16sp" />
 
 
 </RelativeLayout>

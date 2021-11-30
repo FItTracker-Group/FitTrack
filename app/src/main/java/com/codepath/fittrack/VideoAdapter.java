@@ -41,7 +41,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     public VideoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View videoView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
         WebView webView = videoView.findViewById(R.id.ytVideo);
-        webView.setBackgroundColor(Color.parseColor("#000000"));
+        webView.setBackgroundColor(Color.parseColor("#bdcad9"));
         return new VideoAdapter.ViewHolder(videoView);
     }
 
@@ -103,6 +103,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         private TextView tvTitle;
         private TextView difficulty;
         private TextView muscleType;
+        private TextView tvdummy;
+        private TextView tvdummy2;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -111,6 +113,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             difficulty = itemView.findViewById(R.id.tvDifficulty);
             muscleType = itemView.findViewById(R.id.tvMuscleType);
             videoWeb = (WebView) itemView.findViewById(R.id.ytVideo);
+            tvdummy = itemView.findViewById(R.id.tvDummy);
+            tvdummy2 = itemView.findViewById(R.id.tvDummy2);
             videoWeb.getSettings().setJavaScriptEnabled(true);
             videoWeb.setWebChromeClient(new WebChromeClient());
 
@@ -121,8 +125,13 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             difficulty.setText(video.getVideoDifficulty());
             String videoId = video.getVideoId();
 
-
-
+            if(video.getVideoCategory().equals("stretch")){
+                tvdummy.setText("");
+                difficulty.setText("");
+            }
+            if(video.getVideoCategory().equals("cardio") || video.getVideoCategory().equals("yoga")){
+                tvdummy2.setText("");
+            }
             if(video.getVideoCategory().equals("weight") || video.getVideoCategory().equals("stretch"))
                 muscleType.setText(video.getMuscleType());
         }

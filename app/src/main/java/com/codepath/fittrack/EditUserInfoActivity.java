@@ -75,9 +75,9 @@ public class EditUserInfoActivity extends AppCompatActivity {
                 //Prepare data intent
                 Intent data = new Intent();
 
-                saveChange(newName,newdescription,photoFile);
+                saveChange(newName,newdescription,photoFile,data);
                 //Activity finished
-                //setResult(RESULT_OK, data); //set result code and bundle data for response
+                setResult(RESULT_OK, data); //set result code and bundle data for response
                 finish(); //close the activity, pass the data back to feed
             }
         });
@@ -139,18 +139,29 @@ public class EditUserInfoActivity extends AppCompatActivity {
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
 
-    public void saveChange (String newName,String newDescription, File photoFile) {
+    public void saveChange (String newName,String newDescription, File photoFile, Intent data) {
+        ParseFile newFile=new ParseFile(photoFile, "photo.jpg");
+        try {
+            newFile.save();
+        } catch (ParseException e) {
+            Log.e(TAG, "couldn't save photo");
+        }
+        data.putExtra("name",newName);
+        data.putExtra("description",newDescription);
         ParseUser currentUser = ParseUser.getCurrentUser();
         if(!newName.isEmpty()){
             currentUser.put("displayName", newName);
         }
         if(!newDescription.isEmpty()){
             currentUser.put("userDescription", newDescription);
+            //tvProfileDescription=findViewById(R.id.tvProfileDescription);
+            //tvuserName.setText(newDescription);
         }
         if(photoFile!=null){
-            ParseFile newFile=new ParseFile(photoFile, "photo.jpg");
             currentUser.put("profileImage", newFile);
         }
+        Log.i(TAG,"photourl: "+newFile.getUrl());
+        data.putExtra("photourl",newFile.getUrl());
         currentUser.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -158,7 +169,7 @@ public class EditUserInfoActivity extends AppCompatActivity {
                     Log.e(TAG, "Error with uploading", e);
                     return;
                 }
-                Toast.makeText(getApplicationContext(), "Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Uploaded Successfully", Toast.LENGTH_SHORT).show();
             }
         });
     }
