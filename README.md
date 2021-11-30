@@ -40,7 +40,8 @@ A fitness application designed to help people learn about various exercises and 
 - [x] User can make a post to the feed
 
 **Optional Nice-to-have Stories**
-- [ ] Weekly Weight Tracker - can upload pictures of themselves
+- [x] Weekly Weight Tracker
+- [ ] Users can update the weekly weight tracker with their weight and the day
 - [ ] Meal Recommendations
 - [ ] Comment section/rating
 - [ ] Point System
@@ -49,10 +50,11 @@ A fitness application designed to help people learn about various exercises and 
 - [x] User can time their workout or set a timer for rest periods
 - [x] User can navigate workouts with a search bar
 - [ ] Users can find personal training coaches
+- [ ] Fullscreen and landscape capability for our videos
 
 **Current Progress GIFS**
 
-<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/Unit-12-FitTrack.gif' width='200' alt='Video Walkthrough' />
+<img src='https://github.com/FItTracker-Group/FitTrack/blob/main/fittrack%20unit%2013.gif' width='200' alt='Video Walkthrough' />
 
 ### 2. Screen Archetypes
 
