@@ -49,7 +49,7 @@ A fitness application designed to help people learn about various exercises and 
 - [x] User can time their workout or set a timer for rest periods
 - [x] User can navigate workouts with a search bar
 - [ ] Users can find personal training coaches
-- [ ] Fullscreen capability for our videos
+- [ ] Fullscreen and landscape capability for our videos
 
 **Current Progress GIFS**
 
