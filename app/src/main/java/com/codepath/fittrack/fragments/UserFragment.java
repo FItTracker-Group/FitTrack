@@ -111,6 +111,8 @@ public class UserFragment extends Fragment {
                         && etBMIWeight != null  &&  !"".equals(etBMIWeight)) {
                     float weightValue = Float.parseFloat(s1);
                     float heightValue = Float.parseFloat(s2) / 100;
+                    weightValue = (float) (weightValue * 0.4536);
+                    heightValue = (float) (heightValue * 2.54);
                     float bmi = weightValue / (heightValue * heightValue);
 
 
